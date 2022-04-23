@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 3 elements to &apos;In220401_/src/(default package)&apos;&#x0D;&#x0A;- Original project: &apos;In220401&apos;&#x0D;&#x0A;- Destination element: &apos;In220401_/src/(default package)&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     Wr220401_01.java&#x0D;&#x0A;     Wr220401_02.java&#x0D;&#x0A;     Wr220401_03.java&#x0D;&#x0A;- Update references to refactored element" description="Move compilation units" destination="=In220401_/src&lt;" element1="/src&lt;{Wr220401_01.java" element2="/src&lt;{Wr220401_02.java" element3="/src&lt;{Wr220401_03.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1649678666676" units="3" version="1.0"/>
+</session>

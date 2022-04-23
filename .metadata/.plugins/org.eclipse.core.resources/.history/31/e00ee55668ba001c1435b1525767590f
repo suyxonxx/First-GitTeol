@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+public class Wr220411_01 {
+
+	public static void main(String[] args) {
+//		-1-
+		int sum = 0;
+		System.out.printf("★사칙연산 대신 해드립니다! (초기 결과값은 %d입니다.)★\n", sum);
+
+		q : for (int i = 1; i <=4; i++) {
+			for (; ;) {
+			System.out.println("어떤 종류의 연산을 하시겠습니까? (아래에 +, -, *, / 중 하나를 입력해주세요.)");
+			Scanner sc1 = new Scanner(System.in);
+			String ch = sc1.nextLine();
+			Scanner sc2 = new Scanner(System.in);
+			System.out.println("아래에 정수를 입력해주세요.");
+			int num = sc2.nextInt();
+
+			if (ch.equals ("+"))
+				sum += num;
+			else if (ch.equals ("-"))
+				sum -= num;
+			else if (ch.equals ("*"))
+				sum *= num;
+			else if (ch.equals ("/"))
+				sum /= num;
+			
+			System.out.println("결과 : " + sum);
+			continue q;
+			}//for 끝
+		}//q 끝
+		
+//		-2-
+//		int sum = 0;
+//		System.out.printf("★사칙연산 대신 해드립니다! (초기 결과값은 %d입니다.)★\n", sum);
+//
+//		for (; ;) {
+//			System.out.println("어떤 종류의 연산을 하시겠습니까? (아래에 +, -, *, / 중 하나를 입력해주세요.)");
+//			Scanner sc1 = new Scanner(System.in);
+//			String ch = sc1.nextLine();
+//			Scanner sc2 = new Scanner(System.in);
+//			System.out.println("아래에 정수를 입력해주세요.");
+//			int num = sc2.nextInt();
+//
+//			if (ch.equals ("+"))
+//				sum += num;
+//			else if (ch.equals ("-"))
+//				sum -= num;
+//			else if (ch.equals ("*"))
+//				sum *= num;
+//			else if (ch.equals ("/"))
+//				sum /= num;
+//			else {
+//				num = sum;
+//				System.out.println("잘못된 입력입니다. 다시 입력해주세요. (이전의 결과값은 저장되며, 아래와 같습니다.)");
+//			}
+//			System.out.println("결과 : " + sum);
+//			continue;
+//		}//for 끝
+	}//main 끝
+}

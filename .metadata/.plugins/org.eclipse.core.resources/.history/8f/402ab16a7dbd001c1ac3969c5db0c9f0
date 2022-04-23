@@ -1,0 +1,22 @@
+import java.util.*;
+
+public class Wr220416_02 {
+	
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		String result = sc.nextLine();
+		
+		String yes = "YYES";
+		
+		switch(result) {
+		case "YYYES"
+			System.out.println();
+			
+		}
+		
+		sc.close();
+		
+	}//end of main
+
+}
