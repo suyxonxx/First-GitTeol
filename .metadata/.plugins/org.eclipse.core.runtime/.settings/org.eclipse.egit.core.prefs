@@ -1,5 +1,5 @@
-GitRepositoriesView.GitDirectories=C\:\\Repositories\\.git;
-GitRepositoriesView.GitDirectories.relative=C\:\\Repositories\\.git;
+GitRepositoriesView.GitDirectories=C\:\\Repositories\\.git;C\:\\Repositories\\First-GitTeol\\.git;
+GitRepositoriesView.GitDirectories.relative=C\:\\Repositories\\.git;.git;
 RepositoryGroups.uuids=
 RepositorySearchDialogSearchPath=C\:\\Repositories\\First-GitTeol
 eclipse.preferences.version=1

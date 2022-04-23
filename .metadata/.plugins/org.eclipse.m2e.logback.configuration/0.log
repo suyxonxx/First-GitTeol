@@ -27,3 +27,6 @@
 2022-04-22 11:32:52,111 [Worker-43: Git Repository Change Scanner] WARN  org.eclipse.jgit.lib.Repository - close() called when useCnt is already zero for Repository[D:\Ezen01_copy\.git]
 2022-04-23 18:53:55,984 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
 2022-04-23 19:32:21,709 [Worker-0: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-04-23 21:44:01,469 [Worker-0: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-04-23 22:01:41,775 [Framework stop - Equinox Container: e6153fdb-a154-4782-8d56-06b20672dfbe] WARN  org.eclipse.jgit.lib.Repository - close() called when useCnt is already zero for Repository[C:\Repositories\First-GitTeol\.git]
+2022-04-23 22:02:36,675 [Worker-8: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.

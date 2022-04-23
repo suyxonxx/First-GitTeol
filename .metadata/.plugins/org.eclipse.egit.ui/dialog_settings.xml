@@ -14,5 +14,8 @@
 		<item key="sortItemState" value="false"/>
 	</section>
 	<section name="GitCommitMessageComponent">
+		<list key="C:\Repositories\First-GitTeol\.git">
+			<item value="empty"/>
+		</list>
 	</section>
 </section>
