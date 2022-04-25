@@ -5,16 +5,16 @@ public class BankAccount { //클래스 --> 클래스 설계는 추상화 개념
 //	인스턴스변수(멤버변수) 원칙 : 외부에서 직접 접근 금지 (정보 은닉의 목적 중 무결성을 위한 것)
 	private int balance; //잔액
 	
-//	private int sum;
-//	
+	private int sum;
+	
 //	getter, setter -->get은 값 출력, set은 값 입력 시 사용.
-//	void setSum (int sum) {
-//		this.sum = sum;
-//	}
-//	
-//	int getsum() {
-//		return this.sum;
-//	}
+	void setSum (int sum) {
+		this.sum = sum;
+	}
+	
+	int getSum() {
+		return this.sum;
+	}
 	
 	int deposit (int amount) { //입금
 		
@@ -38,14 +38,14 @@ class MainClass{
 	public static void main(String[] args) {
 //		System.out.println(); 문장 사용 금지
 		
+		BankAccount bank = new BankAccount();
+//		
 //		아래는 XXXXX!!!
-//		BankAccount money = new BankAccount();
+//		bank.balance = 10000; //이거 아니아니아니됨!!!
+//		bank.checkBalance();
 //		
-//		money.balance = 10000; //이거 아니아니아니됨!!!
-//		money.checkBalance();
-//		
-//		money.withdraw(3000);
-//		money.checkBalance();
+//		bank.withdraw(3000);
+//		bank.checkBalance();
 //		System.out.println("-----------------");
 		
 		BankAccount kim = new BankAccount();
@@ -77,7 +77,8 @@ class MainClass{
 		park.checkBalance();
 		
 //		getter setter
-//		bank.setSum(100);
-//		bank.getSum();
+		bank.setSum(100); //입력담당 setter
+//		bank.getSum(); //출력담당 getter
+		System.out.println(bank.getSum()); //getter 시각화
 	}
 }
