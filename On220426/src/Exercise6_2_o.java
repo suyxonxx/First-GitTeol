@@ -28,7 +28,7 @@ class SutdaCard2 {
 		if(num > 1 && num <= 10)
 			this.num = num;
 		else
-			this.num = 0;
+			this.num = 1;
 		
 		this.isKwang = isKwang;
 	}
