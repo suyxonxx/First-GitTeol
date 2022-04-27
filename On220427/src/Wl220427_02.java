@@ -1,12 +1,12 @@
-//문제 원문
-class Parent1 {
+//overriding
+class Parent2 {
 	int x = 100;
 	
-	Parent1() {
+	Parent2() {
 		this(200);
 	}
 	
-	Parent1(int x) {
+	Parent2(int x) {
 		this.x = x;
 	}
 	
@@ -15,22 +15,26 @@ class Parent1 {
 	}
 }
 
-class Child1 extends Parent1 {
+class Child extends Parent2 {
 	int x = 3000;
 	
-	Child1() {
+	Child() {
 		this(1000);
 	}
 	
-	Child1(int x) {
+	Child(int x) {
 		this.x = x;
+	}
+	
+	int getX() {
+		return x;
 	}
 }
 
-public class Wl220427_01 {
+public class Wl220427_02 {
 	
 	public static void main(String[] args) {
-		Child1 c = new Child1();
+		Child c = new Child();
 		System.out.println("x = " + c.getX());
 	}
 }

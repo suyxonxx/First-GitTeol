@@ -18,17 +18,26 @@ public class Cars {
 		Sports sp = new Sports();
 		sp.setColor("red");
 		System.out.println(sp.getColor());
+		sp.run();
 		
 		Sports sp2 = new Sports("yellow", 2, 4, 1, 5000);
 		System.out.println(sp2.getColor() + ", " + sp2.getPassenger() + ", "
 		+ sp2.getTire() + ", " + sp2.getSeat() + ", " + sp2.getHorsepower());
+		
+		sp2.run();
+		
+		Sports sp3 = new Sports();
+		sp3.run();
 	}
 }
 
+//3rd generation
 class Sports extends Sedan {
 	int horsepower;
 	
-	public Sports() {}
+	public Sports() {
+		System.out.println("Sports");
+	}
 	public Sports(String color, int passenger, int tire, int seat, int horsepower) {
 		super(color, passenger, tire, seat);
 		System.out.println("Sport() 생성자");
@@ -37,19 +46,24 @@ class Sports extends Sedan {
 	public int getHorsepower() {
 		return horsepower;
 	}
-	public void setHorsepower(int horsepower) {
-		this.horsepower = horsepower;
+	
+	void run() {
+		System.out.println("달려라 달려라 달달려라려라");
 	}
 }
 
+//2nd generation
 class Sedan extends Car {
 	private String color;
 	
-	public Sedan() {}
+	public Sedan() {
+		System.out.println("Sedan");
+	}
 	public Sedan(String color, int passenger, int tire, int seat) {
 		super(passenger, tire, seat); //상위클래스(Car) 생성자에게 전달
 		System.out.println("Sedan() 생성자");
 		this.color = color;
+//		값을 setter로 받는 것보다 super와 this로 받는 것이 보다 효과적.
 //		setPassenger(passenger);
 //		setTire(tire);
 //		setSeat(seat);
@@ -75,12 +89,15 @@ class Truck {
 	void objectLoad() {}
 }
 
+//1st generation
 class Car {
 	private int passenger;
 	private int tire;
 	private int seat;
 	
-	public Car() {}
+	public Car() {
+		System.out.println("Car");
+	}
 	public Car(int passenger, int tire, int seat) {
 		System.out.println("Car() 생성자");
 		this.passenger = passenger;
@@ -107,6 +124,8 @@ class Car {
 		this.seat = seat;
 	}
 	
-	void run() {}
+	void run() {
+		System.out.println("달려라 달려");
+	}
 	void stop() {}
 }
