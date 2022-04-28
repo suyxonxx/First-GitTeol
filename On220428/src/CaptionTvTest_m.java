@@ -1,4 +1,3 @@
-import com.ezen.Tv;
 
 class Tv {
 	private boolean power;
