@@ -1,3 +1,5 @@
+import com.ezen.Tv;
+
 class Tv {
 	private boolean power;
 	private int channel;
