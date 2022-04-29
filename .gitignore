@@ -8,7 +8,9 @@ tmp/
 *~.nib
 local.properties
 .settings/
+.classpath
 .loadpath
+.project
 .recommenders
 .target/
 
