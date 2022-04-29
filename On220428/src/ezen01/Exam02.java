@@ -1,4 +1,4 @@
-package com.ezen;
+package ezen01;
 
 public class Exam02 {
 
