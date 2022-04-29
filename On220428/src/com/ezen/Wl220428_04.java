@@ -41,17 +41,11 @@ class Buyer {
 		Buyer ba = new Buyer();
 		if(i >= ba.cart.length) {
 			Product[] bigCart = new Product[ba.cart.length * 2];
-			for (i = 0; i < ba.cart.length; i++) {
-				Product temp = cart[i];
-				cart[i] = bigCart[i];
-				bigCart[i] = temp;
-			}
+				System.arraycopy(cart, 0, bigCart, 0, cart.length);
 			cart = bigCart;
 		}
-		while (i < cart.length) {
 			cart[i] = p;
 			i++;
-		}
 	} //end of add
 	
 	void summary() {
@@ -59,7 +53,7 @@ class Buyer {
 		(3) . 아래의 로직에 맞게 코드를 작성하시오
 		1.1 . 장바구니에 담긴 물건들의 목록을 만들어 출력한다
 		1.2 . 장바구니에 담긴 물건들의 가격을 모두 더해서 출력한다
-		1.3 (money) . 물건을 사고 남은 금액 를 출력한다
+		1.3 . 물건을 사고 남은 금액 (money)를 출력한다
 		*/
 		int sum = 0;
 		System.out.print("구입한 물건 : ");
