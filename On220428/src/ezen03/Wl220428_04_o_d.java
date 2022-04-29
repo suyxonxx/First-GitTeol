@@ -1,6 +1,6 @@
-package ezen02;
+package ezen03;
 
-public class Wl220428_04_o {
+public class Wl220428_04_o_d {
 	public static void main(String args[]) {
 		Buyer b = new Buyer();
 		b.buy(new Tv());
@@ -43,11 +43,13 @@ class Buyer {
 			1.2 물건을 장바구니(cart)에 저장한다. 그리고 i의 값을 1 증가시킨다.
 		*/
 		if(i >= cart.length) {
-			Product[] tmp = new Product[cart.length * 2];
-			
-			for(int j = 0; j < cart.length; j++)
-				tmp[j] = cart[j];
-			cart = tmp;
+			Product[] bigCart = new Product[cart.length * 2];
+			for (int j = 0; j < cart.length; j++) {
+				Product temp = cart[j];
+				cart[j] = bigCart[j];
+				bigCart[j] = temp;
+			}
+			cart = bigCart;
 		}
 		cart[i++] = p;
 		System.out.println("p : " + p + " --> cart[" + i + "] : " + cart[i - 1] + "\n");
@@ -59,7 +61,7 @@ class Buyer {
 			1.2 장바구니에 담긴 물건들의 가격을 모두 더해서 출력한다.
 			1.3 물건을 사고 남은 금액(money)를 출력한다.
 		*/
-			String list = "";
+			String list = ""; //여기서, ""가 아닌 null로 초기화한다면, nullTv로 시작함
 			int sum = 0;
 			for(int i = 0; i < cart.length; i++) {
 				list += cart[i] + ", ";
