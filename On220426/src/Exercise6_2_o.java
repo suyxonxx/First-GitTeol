@@ -20,7 +20,7 @@ class SutdaCard2 {
 //		this.num = 1; //--1
 //		this.isKwang = true; //--1
 		
-//		defalut 값을 알아서 설정해주면 될 뿐, 무조건 비워놓아야 한다는 법은 없음!
+//		default 값을 알아서 설정해주면 될 뿐, 무조건 비워놓아야 한다는 법은 없음!
 		this(1, true); //--2
 	}
 	

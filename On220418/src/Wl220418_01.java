@@ -8,7 +8,7 @@ public class Wl220418_01 {
 		int i = 0;
 		
 		{
-			File file = new File("Data/data1.txt");//파일을 불러옴
+			File file = new File("Data/data.txt");//파일을 불러옴
 			FileInputStream src = new FileInputStream(file);//파일의 정보를 읽어와서 메모리에 올려둠
 			Scanner sc = new Scanner(src);
 			
@@ -26,7 +26,7 @@ public class Wl220418_01 {
 		int[] nums = new int[i];
 		
 		{//배열 공간에 data1.txt 넣기
-			File file = new File("Data/data1.txt");//파일을 불러옴
+			File file = new File("Data/data.txt");//파일을 불러옴
 			FileInputStream src = new FileInputStream(file);//파일의 정보를 읽어와서 메모리에 올려둠
 			Scanner sc = new Scanner(src);
 			for (int j = 0; j < i; j++) {
