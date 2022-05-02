@@ -6,15 +6,15 @@ public class Wl220426_02 {
 	public static void main(String[] args) {
 //		생성자 호출 >> 디폴트 생성자
 		Student2 s = new Student2("손흥민", 1, 10, 90, 100, 60);
-		System.out.println(s.getName());
+//		System.out.println(s.getName()); //롬복은
 		System.out.println(s.getTotal());
 		
 		Student2 s2 = new Student2("손만두", 2, 9, 90, 80, 70);
-		System.out.println(s2.getName());
+//		System.out.println(s2.getName()); //나중에
 		System.out.println(s2.getTotal());
 		
 		Student2 s3 = new Student2("손찐빵", 2, 9);
-		System.out.println(s3.getName());
+//		System.out.println(s3.getName()); //쓰세용
 		System.out.println(s3.getTotal());
 		
 	}//end of main
