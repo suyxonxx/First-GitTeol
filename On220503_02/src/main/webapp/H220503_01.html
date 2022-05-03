@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class = "nctg">
+		<a id = "news_press_menu" href = "#" class = "btn_nctg">언론사 전체보기</a>
+		
+		<ul id = "press_dropdown" class = "cpress_list_hide">
+			<li><a href = "#">언론사 전체보기</a></li>
+			<li><a href = "#">종합</a></li>
+			<li><a href = "#">방송/통신</a></li>
+			<li><a href = "#">과학/기술</a></li>
+			<li><a href = "#">스포츠/연예</a></li>
+			<li><a href = "#">경제/사회</a></li>
+			<li><a href = "#">지역신문</a></li>
+		</ul>
+	</div>
+	
+	<!-- 중첩 목록 -->
+	<div>
+		<ul>
+			<li>HTML5</li>
+				<ol>
+					<li style = "color : orange;">앵커 태그</li>
+					<li style = "background-color: ">목록 태그</li>
+					<li style = "background-color: yellow;">테이블 태그</li>
+				</ol>
+			<li>CSS</li>
+				<ol>
+					<li style = "color : lime;">Animation</li>
+					<li style = "color : aqua;">3D Transform</li>
+				</ol>
+		</ul>
+	</div>
+	
+	<table border = "1" style = "color : powderblue;"> <!-- 표 생성(border값을 안주면 구분선 없는 표가 그려짐) -->
+		<caption style = "color : blue;">테이블</caption>
+		<tr> <!-- 행 생성 -->
+			<th>이름</th> <!-- 필드 제목 -->
+			<th>나이</th>
+		</tr>
+		<tr>
+			<td>홍길동</td> <!-- 열 생성 -->
+			<td>50</td>
+		</tr>
+		<tr>
+			<td>이순신</td>
+			<td>36</td>
+		</tr>
+	</table>
+	
+	<table border = "1">
+		<caption>시간표</caption>
+		<tr>
+			<th rowspan = "2">교시</th> <!-- 행 2개 합치기 -->
+			<th colspan = "5">요일</th> <!-- 열 5개 합치기 -->
+		</tr>
+		<tr>
+			<th>월</th>
+			<th>화</th>
+			<th>수</th>
+			<th>목</th>
+			<th>금</th>
+		</tr>
+		<tr>
+			<td>1교시</td>
+			<td>JAVA</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2교시</td>
+			<td></td>
+			<td>JAVA</td>
+			<td></td>
+			<td>CSS</td>
+			<td>CSS</td>
+		</tr>
+		<tr>
+			<td>3교시</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>	
+<a href = https://www.google.com style = "font-size: 500%">구글</a><br>
+<img src = "https://cdn.imweb.me/upload/S201907024711f2efb4922/48cf73641de67.jpg"
+			alt = "이미지경로상이" width = "800" height = "500">
+<img src = "https://www.wooripet.co.kr/data/file/come3_1/thumb-1888858983_9H3rYgqm_DSC00467_1400x933.jpg"
+			alt = "이미지경로상이" width = "800" height = "500">
+			
+	<table border = "1">
+		<caption>테이블 데이타</caption>
+		<tr>
+			<th colspan = "3">Table Data</th>
+			<th rowspan = "3">Table Data</th>
+		</tr>
+		<tr>
+			<th>Table Data</th>
+			<th rowspan = "2">Table Data</th>
+			<th>Table Data</th>
+		</tr>
+		<tr>
+			<th>Table Data</th>
+			<th>Table Data</th>
+		</tr>
+	</table>
+</body>
+</html>
