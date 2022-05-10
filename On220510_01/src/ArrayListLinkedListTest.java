@@ -79,4 +79,19 @@ public class ArrayListLinkedListTest {
  * LinkedList : 28
  * 
  * <내 노트북 결과>
+ * = 순차적으로 추가하기 =
+ * ArrayList : 525
+ * LinkedList : 445
+ * 
+ * = 중간에 추가하기 =
+ * ArrayList : 5115
+ * LinkedList : 21
+ * 
+ * = 중간에서 삭제하기 =
+ * ArrayList : 4003
+ * LinkedList : 178
+ * 
+ * = 순차적으로 삭제하기 =
+ * ArrayList : 12
+ * LinkedList : 35
  */
