@@ -41,8 +41,6 @@ class Person implements Comparable{
 	
 	@Override
 	public int compareTo(Object o) {
-		Person p = (Person)o;
-		
 //		= 1. 교재의 예시로 나와있으나, 없어보인다 함... =
 //		if(this.age > p.age) return 1;
 //		else if(this.age < p.age) return -1;
@@ -52,6 +50,6 @@ class Person implements Comparable{
 //		2-1. 오름차순
 //		return this.age - p.age;
 //		2-2.내림차순
-		return p.age - this.age;
+		return ((Person)o).age - this.age;
 	} //end of compareTo
 } //end of class Person
