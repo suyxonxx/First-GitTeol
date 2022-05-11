@@ -48,7 +48,7 @@ class Person implements Comparable{
 		
 //		= 2. 간zi 그 자체 =
 //		2-1. 오름차순
-//		return this.age - p.age;
+//		return this.age - ((Person)o).age;
 //		2-2.내림차순
 		return ((Person)o).age - this.age;
 	} //end of compareTo
