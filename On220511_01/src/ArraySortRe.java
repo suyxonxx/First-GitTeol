@@ -39,6 +39,6 @@ class PersonRe implements Comparable{
 //		1. 글자수 오름차순
 		return this.name.length() - ((PersonRe)o).name.length();
 //		2. 글자수 내림차순
-//		return p.name.length() - this.name.length();
+//		return ((PersonRe)o).name.length() - this.name.length();
 	} //end of compareTo
 } //end of class PersonRe
