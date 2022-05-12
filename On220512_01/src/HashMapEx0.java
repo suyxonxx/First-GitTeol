@@ -1,11 +1,23 @@
 import java.util.*;
 
-public class HashMapEx1 {
+class AgeDecrescendo implements Comparator<Integer> {
+//	내림차순 정렬을 위한 Method
+	@Override
+	public int compare(Integer o1, Integer o2) {
+		return o2 - o1;
+	}
+} //end of class AgeDesc
+
+public class HashMapEx0 {
 	public static void main(String[] args) {
 //		HashMap을 사용할 경우, 순서 없이 랜덤하게 출력되며
-//		TreeMap을 사용할 경우, 오름차순으로 정렬된 순서로 출력됨
 //		HashMap<Integer, String> map = new HashMap<Integer, String>();
-		TreeMap<Integer, String> map = new TreeMap<Integer, String>();
+		
+//		TreeMap을 사용할 경우, 오름차순으로 정렬된 순서로 출력됨
+//		TreeMap<Integer, String> map = new TreeMap<Integer, String>();
+		
+//		내림차순 정렬을 위해 AgeDecrescendo의 객체를 생성
+		TreeMap<Integer, String> map = new TreeMap<Integer, String>(new AgeDecrescendo());
 		
 		map.put(6, "Kim");
 		map.put(3, "Kim");
@@ -36,5 +48,5 @@ public class HashMapEx1 {
 		while(itr.hasNext())
 			System.out.print(map.get(itr.next()) + "\t");
 		System.out.println();
-	}
-}
+	} //end of main
+} //end of public class
