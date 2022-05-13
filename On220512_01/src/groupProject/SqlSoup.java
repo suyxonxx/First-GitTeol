@@ -8,12 +8,12 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class SqlSoup {
-	private Connection con; //mySQL 연결
+	private Connection con; // mySQL 연결
 	private PreparedStatement pstmt; // SQL 문장 전송
 	
 	private final String URL = "jdbc:mysql://localhost:3306/naverCrolling?serverTimezone=UTC";
 	
-//	드라이버 등록 : 한 번만 등록하면 됨.
+//	드라이버 등록
 	public SqlSoup() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -80,7 +80,7 @@ public class SqlSoup {
 //			3. MySQL로 SQL 문장 전송
 			pstmt = con.prepareStatement(sql);
 			
-//			4. ?, ?, ?에 값 채우기
+//			4. values(?, ?, ?)에 값 채우기
 			pstmt.setInt(1, no);
 			pstmt.setString(2, title);
 			pstmt.setString(3, content);
@@ -99,7 +99,7 @@ public class SqlSoup {
 		SqlSoup db = new SqlSoup();
 		db.getConnection();
 		
-//		크롤링(crawling) 및 
+//		2. 크롤링(crawling) 및 데이터 입출력
 		int pages = 5;
 		int index = 0;
 		
@@ -108,13 +108,9 @@ public class SqlSoup {
 				String url = "https://news.naver.com/main/list.naver?mode=LS2D&mid=shm&sid2=249&sid1=102&date=20220502&page=" + i;
 				
 				Document doc = Jsoup.connect(url).get();
-//				System.out.println(doc);
 				Elements elements = doc.getElementsByAttributeValue("class", "list_body newsflash_body");
 				Element element = elements.get(0);
-//				System.out.println(element);
-				
 				Elements photoElements = element.getElementsByAttributeValue("class", "photo");
-//				System.out.println(photoElements);
 				
 				for(int j = 0; j < photoElements.size(); j++) {		
 //					1차 필터링
@@ -132,7 +128,7 @@ public class SqlSoup {
 					
 //					기사에 첨부된 이미지들의 링크만 추출
 					Element imgElement = aElement.select("img").get(0);
-					String imgUrl = imgElement.attr("src");
+//					String imgUrl = imgElement.attr("src");
 //					System.out.println(imgUrl);
 					
 //					기사들의 제목만 추출
@@ -152,6 +148,7 @@ public class SqlSoup {
 			} //end of for i
 		} catch(Exception e) {
 			e.printStackTrace();
+			db.disConnection();
 		}
 	}//end of main
 }
