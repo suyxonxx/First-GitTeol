@@ -58,9 +58,8 @@ public class SqlSoup {
 			
 //			5. 결과 출력
 			while(rs.next()) {
-				System.out.println(rs.getInt(1) + ", " + 
-									rs.getString(2) + ", " +
-									rs.getString(3) + ", ");
+				if(rs.getInt(1) > 3) return;
+				System.out.println(rs.getInt(1) + ", " + rs.getString(2) + ", " + rs.getString(3));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -93,16 +92,15 @@ public class SqlSoup {
 			disConnection();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 //		1. db 연결
 		SqlSoup db = new SqlSoup();
 		db.getConnection();
 		
 //		2. 크롤링(crawling) 및 데이터 입출력
-		int pages = 5;
+		int pages = 3;
 		int index = 0;
-		
 		try {
 			for(int i = 1; i < pages; i++) {
 				String url = "https://news.naver.com/main/list.naver?mode=LS2D&mid=shm&sid2=249&sid1=102&date=20220502&page=" + i;
@@ -143,9 +141,9 @@ public class SqlSoup {
 //					System.out.println(content);
 					
 					db.mydbInsert(++index, title, content);
-					db.mydbListData();
 				} //end of for j
 			} //end of for i
+			db.mydbListData();
 		} catch(Exception e) {
 			e.printStackTrace();
 			db.disConnection();
