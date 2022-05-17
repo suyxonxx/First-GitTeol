@@ -1,0 +1,141 @@
+--COUNTRIES 테이블에서 컬럼명  COUNTRY_ID를 국가 ID, COUNTRY_NAME을 국가명으로 조회
+SELECT COUNTRY_ID AS 국가ID, COUNTRY_NAME AS 국가명
+FROM COUNTRIES;
+
+--COUNTRIES 테이블에서 REGION_ID를 중복 제외하고 조회
+SELECT DISTINCT REGION_ID
+FROM COUNTRIES;
+
+--JOBS 테이블에서 JOB_TITLE, MIN_SALARY, MAX_SALARY 컬럼을
+--최소연봉과 최대연봉으로 각각 10% 인상된 상태로 조회
+SELECT JOB_TITLE, MIN_SALARY * 1.1 AS 최소연봉, MAX_SALARY * 1.1 AS 최대연봉
+FROM JOBS;
+
+/*
+    <연산자>
+    산술 연산자 ( + - * / )
+    비교 연산자 ( = <> != > >= < <= )
+    논리 연산자 ( AND, OR, NOT )
+    집합 연산자 ( UNION, UNION ALL, MINUS, INTERSECT )
+    SQL 연산자 ( BETWEEN, IN, LIKE, IS NULL )
+    
+    숫자 뿐만 아니라 문자나 날짜 값을 비교하는 것도 가능
+    ex) 'A' < 'C'
+        '2020-10-10' < '2022-05-17'
+*/
+
+SELECT *
+FROM EMPLOYEES
+WHERE EMPLOYEE_ID = 110;
+
+--EMPLOYEE_ID가 110번인 것만 제외하고 나머지를 다 보여달라는 뜻
+SELECT *
+FROM EMPLOYEES
+WHERE EMPLOYEE_ID <> 110;
+
+SELECT *
+FROM EMPLOYEES
+WHERE EMPLOYEE_ID < 110;
+
+SELECT *
+FROM EMPLOYEES
+WHERE EMPLOYEE_ID >= 120 AND EMPLOYEE_ID <= 130;
+
+SELECT *
+FROM EMPLOYEES
+WHERE MANAGER_ID = 100 OR MANAGER_ID = 120;
+
+SELECT *
+FROM EMPLOYEES
+WHERE LAST_NAME = 'Weiss' OR LAST_NAME = 'Russell';
+
+SELECT COUNT(*)
+FROM EMPLOYEES;
+
+SELECT COUNT(*)
+FROM EMPLOYEES
+WHERE NOT DEPARTMENT_ID = 50;
+
+SELECT *
+FROM EMPLOYEES
+WHERE NOT EMPLOYEE_ID = 100 AND NOT EMPLOYEE_ID = 130;
+
+--employees 테이블에서 FIRST_NAME이 'David'인 직원 조회
+SELECT *
+FROM EMPLOYEES
+WHERE FIRST_NAME = 'David';
+
+--JOBS 테이블에서 최소 월급이 8000 초과인 직업 조회
+SELECT *
+FROM JOBS
+WHERE MIN_SALARY > 8000;
+
+--JOBS 테이블에서 최소 월급이 4000 이상이고 최대 월급이 10000 이하인 직업 조회
+SELECT *
+FROM JOBS
+WHERE MIN_SALARY >= 4000 AND MAX_SALARY <= 10000;
+
+--EMPLOYEES 테이블에서 JOB_ID가 'IT_PROG'이면서 SALARY가 5000 초과인 직원 조회
+SELECT *
+FROM EMPLOYEES
+WHERE JOB_ID = 'IT_PROG' AND SALARY > 5000;
+
+--BETWEEN : 두 값의 범위에 해당하는 데이터만 출력할 때 사용하는 확장 연산자
+SELECT *
+FROM EMPLOYEES
+WHERE EMPLOYEE_ID BETWEEN 120 AND 130;
+    --위의 식은 다음과 같음
+    SELECT *
+    FROM EMPLOYEES
+    WHERE EMPLOYEE_ID >= 120 AND EMPLOYEE_ID <= 130;
+
+--IN 연산자
+SELECT *
+FROM EMPLOYEES
+WHERE FIRST_NAME IN('Steven', 'John', 'Peter');
+    --위의 식은 다음과 같음
+    SELECT *
+    FROM EMPLOYEES
+    WHERE FIRST_NAME = 'Steven' OR FIRST_NAME = 'John' OR FIRST_NAME = 'Peter';
+
+SELECT *
+FROM COUNTRIES
+WHERE COUNTRY_ID IN ('US', 'IL', 'SG');
+
+SELECT *
+FROM COUNTRIES
+WHERE COUNTRY_ID NOT IN ('US', 'IL', 'SG');
+
+--IS NULL : 해당 값이 NULL
+SELECT *
+FROM EMPLOYEES
+WHERE COMMISSION_PCT IS NULL;
+
+SELECT *
+FROM EMPLOYEES
+WHERE COMMISSION_PCT IS NOT NULL;
+
+/*
+    LIKE 연산자 : 문자열 속성에서 부분적으로 일치하는 데이터만 출력할 때 사용
+        % : 0개 이상의 문자
+        _ : 1개의 문자
+        
+    <Example>
+    LIKE 'DATA%' : DATA로 시작하는 문자열
+    LIKE '%DATA' : DATA로 끝나는 문자열
+    LIKE '%DATA%' : DATA가 포함된 문자열
+    LIKE 'DATA____' : DATA로 시작하는 8개(DATA의 글자수 4개 + '_' 개수 4개)의 문자열
+    LIKE '____DATA' : DATA로 끝나는 8개('_' 개수 4개 + DATA의 글자수 4개)의 문자열
+ */
+ 
+SELECT *
+FROM LOCATIONS
+WHERE CITY LIKE 'South%';
+
+SELECT *
+FROM LOCATIONS
+WHERE STREET_ADDRESS LIKE '%St';
+
+SELECT *
+FROM LOCATIONS
+WHERE CITY LIKE 'South____';
