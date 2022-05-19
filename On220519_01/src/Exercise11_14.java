@@ -49,7 +49,7 @@ class Exercise11_14 {
 			
 			if(menu < 1 || menu > 3) {
 				System.out.println("입력 오류가 발생하였습니다. 다시 입력해주세요.");
-				return 0;
+				continue;
 			} else return menu;
 		}
 	} //end of displayMenu
@@ -73,22 +73,18 @@ class Exercise11_14 {
 			 */
 			
 			try {
-				String data = s.next().trim();
+				String data = s.next();
 				
 				if(data.equalsIgnoreCase("Q")) {
 					return;
 				} else {
 					StringTokenizer st = new StringTokenizer(data, ",");
-					ArrayList score = new ArrayList();
-					while(st.hasMoreTokens()) {
-						score.add(st.nextToken());
-					}
-					String name = (String)score.get(0);
-					int ban = Integer.parseInt((String)score.get(1));
-					int no = Integer.parseInt((String)score.get(2));
-					int kor = Integer.parseInt((String)score.get(3));
-					int eng = Integer.parseInt((String)score.get(4));
-					int math = Integer.parseInt((String)score.get(5));
+					String name = st.nextToken();
+					int ban = Integer.parseInt(st.nextToken());
+					int no = Integer.parseInt(st.nextToken());
+					int kor = Integer.parseInt(st.nextToken());
+					int eng = Integer.parseInt(st.nextToken());
+					int math = Integer.parseInt(st.nextToken());
 					
 					Student student = new Student(name, ban, no, kor, eng, math);
 					record.add(student);
