@@ -23,18 +23,13 @@ public class NameCalc extends HttpServlet {
 			int num1 = Integer.parseInt(request.getParameter("num1"));
 			int num2 = Integer.parseInt(request.getParameter("num2"));
 			
-			int addition = num1 + num2;
-			int subtraction = num1 - num2;
-			int multiplication = num1 * num2;
-			int division = num1 / num2;
-			
 			PrintWriter out = response.getWriter();
 			
 			out.println("name : " + name + "<br><br>");
-			out.println(num1 + " + " + num2 + " = " + addition + "<br>");
-			out.println(num1 + " - " + num2 + " = " + subtraction + "<br>");
-			out.println(num1 + " × " + num2 + " = " + multiplication + "<br>");
-			out.println(num1 + " ÷ " + num2 + " = " + division + "<br>");
+			out.println(num1 + " + " + num2 + " = " + (num1 + num2) + "<br>");
+			out.println(num1 + " - " + num2 + " = " + (num1 - num2) + "<br>");
+			out.println(num1 + " × " + num2 + " = " + (num1 * num2) + "<br>");
+			out.println(num1 + " ÷ " + num2 + " = " + ((float)num1 / num2) + "<br>");
 		} catch(Exception e) {
 			PrintWriter out = response.getWriter();
 			out.println("다시 입력해주시기 바랍니다.<br><h3><a href=\"NameCalcJ.jsp\">뒤로가기</a></h3>");
