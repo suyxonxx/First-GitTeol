@@ -13,7 +13,7 @@
 		String na = request.getParameter("na");
 		String[] likes = request.getParameterValues("like"); %>
 	<b><%=edu %></b>과 <b><%=na %></b><br><br>
-	<%for(String like : likes) { %>
-	<b><%=like %></b><br><%} %>
+	<%for(int i = 0; i < likes.length; i++) { %>
+	<b><%=likes[i] %></b><br><%} %>
 </body>
 </html>
