@@ -15,11 +15,11 @@
 		//3. 클라이언트에 전송
 		response.addCookie(cookie);
 %>
-<h2>성공적으로 로그인하셨습니다.</h2>
-<p><a href="main.jsp">들어가기</a>
+		<h2>성공적으로 로그인하셨습니다.</h2>
+		<p><a href="main.jsp">들어가기</a>
 <%
 	} else {
 %>
-<h2>로그인에 실패하셨습니다.</h2>
-<p><a href="loginForm.jsp">되돌아가기</a>
+		<h2>로그인에 실패하셨습니다.</h2>
+		<p><a href="loginForm.jsp">되돌아가기</a>
 <%	} %>
