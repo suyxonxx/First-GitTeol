@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Cookie &amp; Session</title>
 </head>
 <body>
 	<h3>세션 정보를 얻어오는 메소드를 사용하기</h3>
