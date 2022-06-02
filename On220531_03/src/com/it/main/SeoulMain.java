@@ -23,21 +23,21 @@ public class SeoulMain {
 			for(int i=1;i<=35;i++)
 			{
 			   Document doc=Jsoup.connect("https://korean.visitseoul.net/attractions?curPage="+i).get();
-			   Elements poster=doc.select("ul.article-list li.item div.thumb");
-			   Elements comment=doc.select("ul.article-list li.item div.infor-element span.text-dot-d");
-			   Elements link=doc.select("ul.article-list li.item a");
-			   Elements title=doc.select("ul.article-list li.item div.infor-element span.title");
+			   Elements poster=doc.select("ul.article-list li.item div.thumb"); //썸네일 이미지
+			   Elements comment=doc.select("ul.article-list li.item div.infor-element span.text-dot-d"); //썸네일 이미지에 해당하는 장소의 설명
+			   Elements link=doc.select("ul.article-list li.item a"); //상세페이지로 이동하는 링크
+			   Elements title=doc.select("ul.article-list li.item div.infor-element span.title"); //장소 타이틀
 			   for(int j=0;j<poster.size();j++)
 			   {
 				   try{
 					   System.out.println("번호:"+k);
-					   System.out.println(title.get(j).text());
-					   System.out.println(poster.get(j).attr("style"));
-					   System.out.println(comment.get(j).text());
-					   System.out.println(link.get(j).attr("href"));
+					   System.out.println(title.get(j).text()); //타이틀의 텍스트만 추출 후 출력
+					   System.out.println(poster.get(j).attr("style")); //poster의 style 속성 값을 반환(≒attribute) 후 출력
+					   System.out.println(comment.get(j).text()); //장소를 설명하는 부분의 텍스트만 추출 후 출력
+					   System.out.println(link.get(j).attr("href")); //link의 URL을 반환 후 출력
 					   Document doc2=Jsoup.connect("https://korean.visitseoul.net"+link.get(j).attr("href")).get();
-					   Element address=doc2.select("div.detail-map-infor:eq(1) dl dd").get(0);
-					   System.out.println("주소:"+address.text());
+					   Element address=doc2.select("div.detail-map-infor:eq(1) dl dd").get(0); //사진 속 장소의 주소 및 교통정보
+					   System.out.println("주소:"+address.text()); //주소 및 교통정보의 텍스트만 추출 후 출력
 					   System.out.println("=========================================================");
 				       
 					   SeoulLocationVO vo=new SeoulLocationVO();
