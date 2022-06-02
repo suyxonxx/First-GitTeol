@@ -20,7 +20,7 @@ public class idCheckServlet extends HttpServlet {
 		MemberDAO mDao = MemberDAO.getInstance();
 		
 		int result = mDao.confirmID(userid);
-		request.setAttribute("userid", mDao);
+		request.setAttribute("userid", userid);
 		request.setAttribute("result", result);
 		
 		RequestDispatcher dis = request.getRequestDispatcher("member/idCheck.jsp");
