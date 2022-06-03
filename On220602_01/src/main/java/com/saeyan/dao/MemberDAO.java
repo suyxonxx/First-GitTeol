@@ -128,4 +128,36 @@ public class MemberDAO {
 		}
 		return result;
 	}
+
+	public int insertMember(MemberVO mVo) {
+		int result = -1;
+		String sql = "INSERT INTO MEMBER(NAME, USERID, PWD, EMAIL, PHONE, ADMIN)" + 
+					 "VALUES(?, ?, ?, ?, ?, ?)";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, mVo.getName());
+			pstmt.setString(2, mVo.getUserid());
+			pstmt.setString(3, mVo.getPwd());
+			pstmt.setString(4, mVo.getEmail());
+			pstmt.setString(5, mVo.getPhone());
+			pstmt.setInt(6, mVo.getAdmin());
+			
+			result = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
 }

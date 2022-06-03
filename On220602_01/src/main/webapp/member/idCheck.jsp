@@ -5,11 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 관리</title>
+<script type="text/javascript" src="script/member.js"></script>
+<title>중복확인</title>
 </head>
 <body>
 	<h2>아이디 중복확인</h2>
-	<form action="idCheck.do" method="get" name="frm">
+	<form action="/idCheck.do" method="get" name="frm">
 		아이디 : <input type="text" name="userid" value="${userid}">
 		<input type="submit" value="중복 확인"><br>
 		<c:if test="${result == 1}">
