@@ -160,4 +160,35 @@ public class MemberDAO {
 		}
 		return result;
 	}
+
+	public void updateMember(MemberVO mVo) {
+		String sql = "UPDATE MEMBER SET PWD=?, EMAIL=?, PHONE=?, ADMIN=? " +
+					 "WHERE USERID=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, mVo.getPwd());
+			pstmt.setString(2, mVo.getEmail());
+			pstmt.setString(3, mVo.getPhone());
+			pstmt.setInt(4, mVo.getAdmin());
+			pstmt.setString(5, mVo.getUserid());
+			
+			pstmt.executeUpdate();
+			System.out.println("result......");
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
