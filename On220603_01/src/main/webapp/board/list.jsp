@@ -33,7 +33,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<title>Insert title here</title>
+<title>자유게시판</title>
 <style type="text/css">
 .container{margin-top: 50px;}
 .row{margin: 0px auto; width: 960px;}

@@ -131,6 +131,7 @@ public class BoardDAO {
 		
 		try {
 			getConnection();
+
 //			조회수 증가시키기
 			String sql = "update jspBoard set hit = hit + 1 " + "where no = ?";
 			ps = conn.prepareStatement(sql);
@@ -159,4 +160,69 @@ public class BoardDAO {
 		}
 		return vo;
 	} //end of boardDetailData
+	
+//	수정하기(Update)
+	public BoardVO boardUpdateData(int no) {
+		BoardVO vo = new BoardVO();
+		
+		try {
+			getConnection();
+			
+			String sql = "select no, name, subject, content, DATE_FORMAT(regdate, '%Y-%m-%d'), hit "
+					+ "from jspBoard where no = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, no);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				vo.setNo(rs.getInt(1));
+				vo.setName(rs.getString(2));
+				vo.setSubject(rs.getString(3));
+				vo.setContent(rs.getString(4));
+				vo.setDbday(rs.getString(5));
+				vo.setHit(rs.getInt(6));
+			}
+			rs.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			disConnection();
+		}
+		
+		return vo;
+	} //end of boardUpdateData
+	
+	public boolean boardUpdate(BoardVO vo) {
+		boolean chk = false;
+
+		try {
+			getConnection();
+			
+			String sql = "select pwd from jspBoard where no = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, vo.getNo());
+			ResultSet rs = ps.executeQuery();
+			
+			String chk_pwd = "";
+			if(rs.next()) chk_pwd = rs.getString(1);
+			rs.close();
+			
+			if(chk_pwd.equals(vo.getPwd())) {
+				chk = true;
+				sql = "update jspBoard set name = ?, subject = ?, content = ? where no = ?";
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, vo.getName());
+				ps.setString(2, vo.getSubject());
+				ps.setString(3, vo.getContent());
+				ps.setInt(4, vo.getNo());
+				ps.executeUpdate();
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			disConnection();
+		}
+		return chk;
+	}
+	
 } //end of class BoardDAO

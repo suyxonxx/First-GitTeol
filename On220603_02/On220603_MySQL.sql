@@ -11,6 +11,11 @@ create table jspBoard(
     primary key(no)
 );
 
+ALTER TABLE jspBoard
+DROP no;
+
+drop table jspBoard;
+
 desc jspBoard;
 
 insert into jspBoard(name, subject, content, pwd, regdate)

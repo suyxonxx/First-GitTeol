@@ -20,7 +20,6 @@
 	vo.setPwd(pwd);
 	
 	//DAO 연결
-	//BoardDAO dao2 = new BoardDAO();
 	dao.boardInsert(vo);
 	
 	//화면 이동
