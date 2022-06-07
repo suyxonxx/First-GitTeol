@@ -15,7 +15,8 @@
 .row{margin: 0px auto; width: 960px;}
 h1{text-align: center;}
 </style>
-<!-- <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<!-- 아래의 jQuery문을 활용하기 위해서는 boolean chk 대신 int result를 활용할 것
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$('#delBtn').click(function() {
