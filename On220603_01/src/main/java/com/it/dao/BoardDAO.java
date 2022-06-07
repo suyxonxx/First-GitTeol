@@ -223,6 +223,35 @@ public class BoardDAO {
 			disConnection();
 		}
 		return chk;
-	}
+	} //end of boardUpdate
 	
+	public boolean boardDelete(int no, String pwd) {
+		boolean chk = false;
+		
+		try {
+			getConnection();
+			
+			String sql = "select pwd from jspBoard where no = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, no);
+			ResultSet rs = ps.executeQuery();
+			
+			String chk_pwd = "";
+			if(rs.next()) chk_pwd = rs.getString(1);
+			rs.close();
+			
+			if(chk_pwd.equals(pwd)) {
+				chk = true;
+				sql = "delete from jspBoard where no = ?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, no);
+				ps.executeUpdate();
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			disConnection();
+		}
+		return chk;
+	} //end of boardDelete
 } //end of class BoardDAO

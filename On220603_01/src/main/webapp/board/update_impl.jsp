@@ -12,5 +12,15 @@
 
 <%
 	boolean chk = dao.boardUpdate(vo);
-	response.sendRedirect("list.jsp");
+	
+	if(chk == true) {
+		response.sendRedirect("detail.jsp?no=" + vo.getNo());
+	} else {
+%>
+		<script>
+			alert("비밀번호를 바르게 입력해주세요.");
+			history.back();
+		</script>
+<%
+	}
 %>
