@@ -1,24 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import=" java.util.*, com.it.dao.*, java.text.* "%>
+	pageEncoding="UTF-8" import="java.util.*, com.it.dao.*, java.text.*"%>
 
-<jsp:useBean id="dao" class="com.it.dao.BoardDAO" />
+<jsp:useBean id="dao" class="com.it.dao.BoardDAO"/>
 
 <%
-	//1. 사용자 입력값 받기(page)
+	//1. 사용자로부터 입력값 받기(page)
 	String strpage = request.getParameter("page");
 	if (strpage == null) {
 		strpage = "1";
 	}
 	int curpage = Integer.parseInt(strpage);
 	
-	//2. 데이타베이스로 부터 데이터를 읽어 온다
+	//2. 데이터베이스로부터 데이터 읽어오기
 	List<BoardVO> list = dao.boardListData(curpage);
 	int totalpage = dao.boardTotalPage();
 	
 	//페이지 나누기
 	final int BLOCK = 3;
-	int startpage = ((curpage - 1) / BLOCK * BLOCK) + 1; //1/3*3+1=2
-	int endpage = ((curpage - 1) / BLOCK * BLOCK) + BLOCK; //1/3*3+3=4
+	int startpage = ((curpage - 1) / BLOCK * BLOCK) + 1;
+	int endpage = ((curpage - 1) / BLOCK * BLOCK) + BLOCK;
 	
 	if (endpage > totalpage)
 		endpage = totalpage;
@@ -51,7 +51,7 @@ h1{text-align: center;}
 				</tr>
 			</table>
 			<table class="table">
-				<tr class="danger">
+				<tr class="info">
 					<th class="text-center" width=10%>번호</th>
 					<th class="text-center" width=45%>제목</th>
 					<th class="text-center" width=15%>이름</th>

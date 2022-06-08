@@ -1,7 +1,7 @@
 package com.it.dao;
 
 import java.util.*; //List
-import java.sql.*; //Connection.PrepdaedStatment, ResultSet
+import java.sql.*; //Connection, PrepdaedStatment, ResultSet
 
 public class BoardDAO {
 	private Connection conn = null;
@@ -11,17 +11,16 @@ public class BoardDAO {
 	private final String USERNAME = "root";
 	private final String PASSWORD = "1234";
 
-	// 드라이브 등록
+//	드라이버 등록
 	public BoardDAO() {
 		try {
-
-			Class.forName("com.mysql.cj.jdbc.Driver"); // 드라이브 메모리 활당
+			Class.forName("com.mysql.cj.jdbc.Driver"); //드라이버 메모리 할당
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	// MySql 연결
+//	MySQL 연결
 	public void getConnection() {
 		try {
 			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -30,48 +29,48 @@ public class BoardDAO {
 		}
 	}
 
-	// MySql해제
+//	연결 해제
 	public void disConnection() {
 		try {
-			if (ps != null) ps.close();
 			if (conn != null) conn.close();
+			if (ps != null) ps.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	// 1. 목록출력
-	// 게시물 정보 한개 : BoardVO, 게시물 여러개 : (List)
+//	목록 출력 => 게시물 정보가 한개일때 : BoardVO, 여러개일때 : (List)
 	public List<BoardVO> boardListData(int page) {
 		List<BoardVO> list = new ArrayList<BoardVO>();
 
 		try {
-			// 1. 연결
+//			1. 연결
 			getConnection();
-			// 2. SQL문장 작성
+//			2. SQL 문장 작성
 			int rowSize = 10;
-			int start = (rowSize * page) - rowSize;
-			// 10*1 - 10 = 0,10 ..... 10*2-10=10,10, 10*3-10=20,10....
-			String sql = "select no, subject, name, DATE_FORMAT(regdate, '%Y-%m-%d'), hit " // 여기 한칸
-					+ "from jspBoard order by no desc limit ?, ?";
-			// 3. 전송
+			int start = rowSize * (page - 1);
+			String sql = "select no, subject, name, DATE_FORMAT(regdate, '%Y-%m-%d'), hit " +
+						 "from jspBoard order by no desc limit ?, ?";
+//			3. 전송
 			ps = conn.prepareStatement(sql);
-			// 4. 데이타 채우기
+//			4.데이터 채우기
 			ps.setInt(1, start);
 			ps.setInt(2, rowSize);
-			// 5. 데이타 실행
+//			5. 실행
 			ResultSet rs = ps.executeQuery();
 
-			while (rs.next()) {
+			while(rs.next()) {
 				BoardVO vo = new BoardVO();
-				vo.setNo(rs.getInt(1));
-				vo.setSubject(rs.getString(2));
-				vo.setName(rs.getString(3));
+				
+				vo.setNo(rs.getInt(1)); //= vo.setNo(rs.getInt("no"));
+				vo.setSubject(rs.getString(2)); //= vo.setSubject(rs.getString("subject"));
+				vo.setName(rs.getString(3)); //= vo.setName(rs.getString("name")); ...
 				vo.setDbday(rs.getString(4));
 				vo.setHit(rs.getInt(5));
+				
 				list.add(vo);
 			}
-			// 6. 닫기
+//			6. 닫기
 			rs.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -81,12 +80,11 @@ public class BoardDAO {
 		return list;
 	} //end of boardListData
 
-	// 2. 총페이지()
+//	총 페이지
 	public int boardTotalPage() {
 		int total = 0;
 
 		try {
-
 			getConnection();
 			String sql = "select ceil(count(*)/10.0) from jspBoard";
 
@@ -97,7 +95,6 @@ public class BoardDAO {
 				total = rs.getInt(1);
 			}
 			rs.close();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -106,7 +103,7 @@ public class BoardDAO {
 		return total;
 	} //end of boardTotalPage
 	
-//	3. Insert(새글 입력)
+//	Insert(새글 입력)
 	public void boardInsert(BoardVO vo) {
 		try {
 			getConnection();

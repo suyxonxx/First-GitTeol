@@ -24,19 +24,19 @@ h1{text-align: center;}
 		<div class="row">
 			<table class="table">
 				<tr>
-					<th width=20% class="text-center danger">번호</th>
+					<th width=20% class="text-center info">번호</th>
 					<td width=30% class="text-center"><%=vo.getNo() %></td>
-					<th width=20% class="text-center danger">작성일</th>
+					<th width=20% class="text-center info">작성일</th>
 					<td width=30% class="text-center"><%=vo.getDbday() %></td>
 				</tr>
 				<tr>
-					<th width=20% class="text-center danger">이름</th>
+					<th width=20% class="text-center info">이름</th>
 					<td width=30% class="text-center"><%=vo.getName() %></td>
-					<th width=20% class="text-center danger">조회수</th>
+					<th width=20% class="text-center info">조회수</th>
 					<td width=30% class="text-center"><%=vo.getHit() %></td>
 				</tr>
 				<tr>
-					<th width=20% class="text-center danger">제목</th>
+					<th width=20% class="text-center info">제목</th>
 					<td colspan="3"><%=vo.getSubject() %></td>
 				</tr>
 				<tr>
@@ -48,7 +48,7 @@ h1{text-align: center;}
 					<td colspan="4" class="text-right">
 						<a href="update.jsp?no=<%=vo.getNo() %>" class="btn btn-xs btn-danger">수정</a>
 						<a href="delete.jsp?no=<%=vo.getNo() %>" class="btn btn-xs btn-success">삭제</a>
-						<a href="list.jsp" class="btn btn-xs btn-info">목록</a>
+						<a href="list.jsp" class="btn btn-xs btn-primary">목록</a>
 					</td>
 				</tr>
 			</table>
