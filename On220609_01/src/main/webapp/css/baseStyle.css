@@ -1,0 +1,30 @@
+body{
+	margin:0; padding:0; font-style:"맑은 고딕";
+}
+header{
+	margin:0 auto; padding:5px; height:70px; line-height:30px;
+	text-align:center; color:white; background-color:Slateblue;
+}
+menu{
+	margin:0 auto; padding:5px; height:30px; line-height:30px;
+	text-align:left; color:white; background-color:Cornflowerblue;
+}
+menu li{
+	margin:0 30px; padding:0; float:left; list-style:none; display:inline;
+}
+menu li a{
+	text-decoration:none; color:white;
+}
+menu li a:hover{
+	color: Darkslateblue;
+}
+section{
+	margin:0 auto; padding:5px; height:600px; background-color:#DDE;
+}
+#section_title{
+	text-align:center; line-height:40px;
+}
+footer{
+	margin:0 auto; padding:5px; height:40px; line-height:40px;
+	text-align:center; color:white; background-color:Slateblue;
+}
