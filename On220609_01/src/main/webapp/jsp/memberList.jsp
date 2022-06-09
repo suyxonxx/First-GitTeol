@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.sql.*, javax.sql.*"%>
 <%
-	request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("UTF-8");
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	String id = "system";
 	String pwd = "1234";
-	String sql = "select * from member_tbl_02";
+	String sql = "SELECT * FROM MEMBER_TBL_02";
 	
 	try{
 		Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -48,12 +48,12 @@ section table td a:hover{color: Cornflowerblue;}
 			<th>고객등급</th>
 			<th>거주지역</th>
 		</tr>
- 		<%
-		 		while(rs.next()){
-		 			String grade = "7직원";
-		 			if(rs.getString(6).equals("A")) grade = "VIP";
-		 			else if(rs.getString(6).equals("B")) grade = "일반";
- 		%>
+<%
+	while(rs.next()){
+		String grade = "직원";
+		if(rs.getString(6).equals("A")) grade = "VIP";
+		else if(rs.getString(6).equals("B")) grade = "일반";
+%>
  			<tr>
  				<td><a href="memberUpdate.jsp?custno=<%=rs.getString("custno") %>"><%=rs.getString(1) %></a></td>
  				<td><%=rs.getString(2) %></td>
@@ -63,22 +63,22 @@ section table td a:hover{color: Cornflowerblue;}
  				<td><%=grade %></td>
  				<td><%=rs.getString(7) %></td>
  			</tr>
-		<%		} %>
-		<%		
-			}catch(Exception e){
-				e.printStackTrace();
-			}finally{
-				try{
-					if( rs != null) rs.close();
-					if( pstmt != null) pstmt.close();
-					if( conn != null) conn.close();
-				}catch(Exception e){
-					e.printStackTrace();
-				}
-			}
-		%>
+<%		} %>
 	</table>
 	</section>
 	<footer>HRDKOREA Copyrightⓒ2016 All rights reserved. Human Resources Development Service of Korea.</footer>
 </body>
 </html>
+<%		
+	}catch(Exception e){
+		e.printStackTrace();
+	}finally{
+		try{
+			if(rs != null) rs.close();
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+%>

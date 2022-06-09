@@ -68,5 +68,26 @@ public class ShopDAO {
 		}
 		return custno;
 	} //end of seqCustno
+
+	public void shopUpdate(ShopVO vo) {
+		try {
+			getConnection();
+			String sql = "UPDATE MEMBER_TBL_02 SET CUSTNAME=?, PHONE=?, ADDRESS=?, JOINDATE=?, GRADE=?, CITY=? "
+					+"WHERE CUSTNO=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getCustname());
+			pstmt.setString(2, vo.getPhone());
+			pstmt.setString(3, vo.getAddress());
+			pstmt.setString(4, vo.getJoindate());
+			pstmt.setString(5, vo.getGrade());
+			pstmt.setString(6, vo.getCity());
+			pstmt.setInt(7, vo.getCustno());
+			pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			disConnection();
+		}
+	} //end of shopUpdate
 	
 } //end of class shopmanagerDAO

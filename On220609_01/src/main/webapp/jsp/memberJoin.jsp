@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="dao" class="com.shopmanager.dao.ShopDAO"/>
 <jsp:useBean id="vo" class="com.shopmanager.dao.ShopVO"/>
-<%String today = new SimpleDateFormat("yyyyMMdd").format(new Date());%>
+<%String date = new SimpleDateFormat("yyyyMMdd").format(new Date());%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +45,7 @@
 				</tr>
 				<tr>
 					<th>가입일자</th>
-					<td><input type="text" name="joindate" value=<%=today%>></td>
+					<td><input type="text" name="joindate" value=<%=date%>></td>
 				</tr>
 				<tr>
 					<th>고객등급 [A:VIP, B:일반, C:직원]</th>
