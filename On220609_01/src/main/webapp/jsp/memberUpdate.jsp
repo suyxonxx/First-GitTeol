@@ -25,6 +25,7 @@
 <head>
 <meta charset="UTF-8">
 <title>홈쇼핑 회원 정보 수정</title>
+<script type="text/javascript" src="../script/shop.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/baseStyle.css">
 <style type="text/css">
 	section table{width:730px; height:330px; margin:100px auto;}
@@ -33,7 +34,7 @@
 </head>
 <body>
 	<header><h2>쇼핑몰 회원관리 ver 1.0</h2></header>
-	<form method="get" action="memberUpdate_impl.jsp">
+	<form method="get" action="memberUpdate_impl.jsp" name="frm">
 <%
 	if(rs.next()){
 %>
@@ -64,7 +65,7 @@
 				</tr>
 				<tr>
 					<th>가입일자</th>
-					<td><input type="text" name="joindate" value="<%=rs.getString("joindate") %>"></td>
+					<td><input type="text" name="joindate" value="<%=rs.getString("joindate").substring(0, 10) %>"></td>
 				</tr>
 				<tr>
 					<th>고객등급 [A:VIP, B:일반, C:직원]</th>
@@ -76,7 +77,7 @@
 				</tr>
 				<tr>
 					<th colspan="2">
-						<button type="submit" onclick="alert('회원정보 수정이 완료되었습니다.')">수정</button>
+						<button type="submit" onclick="return memberCheck()">수정</button>
 						<button type="button" onclick="location.href='memberList.jsp'">조회</button>
 					</th>
 				</tr>

@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원등록</title>
+<script type="text/javascript" src="../script/shop.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/baseStyle.css">
 <style type="text/css">
 	section table{width:730px; height:290px; margin:100px auto;}
@@ -17,7 +18,7 @@
 </head>
 <body>
 	<header><h2>쇼핑몰 회원관리 ver 1.0</h2></header>
-	<form method="get" action="memberJoin_impl.jsp">
+	<form method="get" action="memberJoin_impl.jsp" name="frm">
 		<menu>
 			<li><a href="memberJoin.jsp">회원등록</a></li>
 			<li><a href="memberList.jsp">회원목록조회/수정</a></li>
@@ -57,7 +58,7 @@
 				</tr>
 				<tr>
 					<th colspan="2">
-						<button type="submit" onclick="alert('회원등록이 완료되었습니다.')">등록</button>
+						<button type="submit" onclick="return memberCheck()">등록</button>
 						<button type="button" onclick="location.href='memberList.jsp'">조회</button>
 					</th>
 				</tr>
