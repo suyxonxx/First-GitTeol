@@ -38,16 +38,16 @@ section table td a:hover{color: Cornflowerblue;}
 		</menu>
 	<section>
 			<h3 id="section_title">쇼핑몰 회원 조회/수정</h3>
-	<table border="1">
-		<tr>
-			<th>회원번호</th>
-			<th>회원성명</th>
-			<th>전화번호</th>
-			<th>주소</th>
-			<th>가입일자</th>
-			<th>고객등급</th>
-			<th>거주지역</th>
-		</tr>
+		<table border="1">
+			<tr>
+				<th>회원번호</th>
+				<th>회원성명</th>
+				<th>전화번호</th>
+				<th>주소</th>
+				<th>가입일자</th>
+				<th>고객등급</th>
+				<th>거주지역</th>
+			</tr>
 <%
 	while(rs.next()){
 		String grade = "직원";
@@ -64,7 +64,7 @@ section table td a:hover{color: Cornflowerblue;}
  				<td><%=rs.getString(7) %></td>
  			</tr>
 <%		} %>
-	</table>
+		</table>
 	</section>
 	<footer>HRDKOREA Copyrightⓒ2016 All rights reserved. Human Resources Development Service of Korea.</footer>
 </body>

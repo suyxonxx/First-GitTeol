@@ -89,5 +89,4 @@ public class ShopDAO {
 			disConnection();
 		}
 	} //end of shopUpdate
-	
 } //end of class shopmanagerDAO
