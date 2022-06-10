@@ -32,6 +32,37 @@ public class ShopDAO {
 		}
 	} //end of disConnection
 	
+	public List<ShopVO> shopList() {
+		
+		List<ShopVO> list = new ArrayList<ShopVO>();
+		
+		try {
+			getConnection();
+			String sql = "SELECT * FROM MEMBER_TBL_02 ";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ShopVO vo = new ShopVO();
+				
+				vo.setCustno(rs.getInt(1));
+				vo.setCustname(rs.getString(2));
+				vo.setPhone(rs.getString(3));
+				vo.setAddress(rs.getString(4));
+				vo.setJoindate(rs.getString(5));
+				vo.setGrade(rs.getString(6));
+				vo.setCity(rs.getString(7));
+				
+				list.add(vo);
+			}
+			rs.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			disConnection();
+		}
+		return list;
+	} //end of shopList
+	
 	public void shopInsert(ShopVO vo) {
 		try {
 			getConnection();
@@ -61,6 +92,7 @@ public class ShopDAO {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()) custno = rs.getInt(1) + 1;
+			rs.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -89,4 +121,32 @@ public class ShopDAO {
 			disConnection();
 		}
 	} //end of shopUpdate
+	
+	public ShopVO ShopUpdateData(int custno) {
+		ShopVO vo = new ShopVO();
+		
+		try {
+			getConnection();
+			String sql = "SELECT CUSTNO, CUSTNAME, PHONE, ADDRESS, JOINDATE, GRADE, CITY "
+					+"FROM MEMBER_TBL_02 WHERE CUSTNO=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, custno);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				vo.setCustno(rs.getInt(1));
+				vo.setCustname(rs.getString(2));
+				vo.setPhone(rs.getString(3));
+				vo.setAddress(rs.getString(4));
+				vo.setJoindate(rs.getString(5));
+				vo.setGrade(rs.getString(6));
+				vo.setCity(rs.getString(7));
+			}
+			rs.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			disConnection();
+		}
+		return vo;
+	} //end of ShopUpdateData
 } //end of class shopmanagerDAO

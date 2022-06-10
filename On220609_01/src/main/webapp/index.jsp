@@ -10,7 +10,7 @@
 <body>
 	<header><h2>쇼핑몰 회원관리 ver 1.0</h2></header>
 	<menu>
-		<li><a href="jsp/memberInsert.jsp">회원등록</a></li>
+		<li><a href="jsp/memberJoin.jsp">회원등록</a></li>
 		<li><a href="jsp/memberList.jsp">회원목록조회/수정</a></li>
 		<li><a href="jsp/moneyList.jsp">회원매출조회</a></li>
 		<li><a href="index.jsp">홈으로</a></li>

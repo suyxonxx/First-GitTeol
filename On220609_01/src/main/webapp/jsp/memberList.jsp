@@ -1,20 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.sql.*, javax.sql.*"%>
+    pageEncoding="UTF-8" import="java.util.*, java.sql.*, javax.sql.*, com.shopmanager.dao.*"%>
+
+<jsp:useBean id="dao" class="com.shopmanager.dao.ShopDAO"/>
 <%
 	request.setCharacterEncoding("UTF-8");
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-	String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	String id = "system";
-	String pwd = "1234";
-	String sql = "SELECT * FROM MEMBER_TBL_02";
-	
-	try{
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		conn = DriverManager.getConnection(url,id,pwd);
-		pstmt = conn.prepareStatement(sql);
-		rs = pstmt.executeQuery();
+	List<ShopVO> list = dao.shopList();
 %>
 <!DOCTYPE html>
 <html>
@@ -43,36 +33,24 @@ section table td a:hover{color: Cornflowerblue;}
 				<th>거주지역</th>
 			</tr>
 <%
-	while(rs.next()){
+	for(ShopVO vo : list) {
 		String grade = "직원";
-		if(rs.getString(6).equals("A")) grade = "VIP";
-		else if(rs.getString(6).equals("B")) grade = "일반";
+		if(vo.getGrade().equals("A")) grade = "VIP";
+		else if(vo.getGrade().equals("B")) grade = "일반";
 %>
  			<tr>
- 				<td><a href="memberUpdate.jsp?custno=<%=rs.getString("custno") %>"><%=rs.getString(1) %></a></td>
- 				<td><%=rs.getString(2) %></td>
- 				<td><%=rs.getString(3) %></td>
- 				<td><%=rs.getString(4) %></td>
- 				<td><%=rs.getString(5).substring(0,10) %></td>
+ 				<td><a href="memberUpdate.jsp?custno=<%=vo.getCustno() %>"><%=vo.getCustno() %></a></td>
+ 				<td><%=vo.getCustname() %></td>
+ 				<td><%=vo.getPhone() %></td>
+ 				<td><%=vo.getAddress() %></td>
+ 				<td><%=vo.getJoindate().substring(0,10) %></td>
  				<td><%=grade %></td>
- 				<td><%=rs.getString(7) %></td>
+ 				<td><%=vo.getCity() %></td>
  			</tr>
-<%		} %>
+<%		
+} %>
 		</table>
 	</section>
 	<%@ include file="body_bottom.jsp" %>
 </body>
 </html>
-<%		
-	}catch(Exception e){
-		e.printStackTrace();
-	}finally{
-		try{
-			if(rs != null) rs.close();
-			if(pstmt != null) pstmt.close();
-			if(conn != null) conn.close();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	}
-%>
