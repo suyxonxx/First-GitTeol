@@ -13,7 +13,7 @@
 		<li><a href="jsp/memberInsert.jsp">회원등록</a></li>
 		<li><a href="jsp/memberList.jsp">회원목록조회/수정</a></li>
 		<li><a href="jsp/moneyList.jsp">회원매출조회</a></li>
-		<li><a href="jsp/home.jsp">홈으로</a></li>
+		<li><a href="index.jsp">홈으로</a></li>
 	</menu>
 	<section>
 		<h3 id="section_title">쇼핑몰 회원관리 프로그램</h3>

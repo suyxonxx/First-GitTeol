@@ -33,17 +33,11 @@
 </style>
 </head>
 <body>
-	<header><h2>쇼핑몰 회원관리 ver 1.0</h2></header>
+	<%@ include file="body_top.jsp" %>
 	<form method="get" action="memberUpdate_impl.jsp" name="frm">
 <%
 	if(rs.next()){
 %>
-		<menu>
-			<li><a href="memberJoin.jsp">회원등록</a></li>
-			<li><a href="memberList.jsp">회원목록조회/수정</a></li>
-			<li><a href="moneyList.jsp">회원매출조회</a></li>
-			<li><a href="../index.jsp">홈으로</a></li>
-		</menu>
 		<section>
 			<h3 id="section_title">쇼핑몰 회원 등록</h3>
 			<table border="1">
@@ -83,8 +77,8 @@
 				</tr>
 			</table>
 		</section>
-		<footer>HRDKOREA Copyrightⓒ2016 All rights reserved. Human Resources Development Service of Korea.</footer>
 	</form>
+	<%@ include file="body_bottom.jsp" %>
 </body>
 </html>
 <%	

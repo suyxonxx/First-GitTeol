@@ -7,6 +7,7 @@ import javax.sql.*;
 public class ShopDAO {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
+	private ResultSet rs = null;
 
 	private final String URL = "jdbc:oracle:thin:@//localhost:1521/xe";
 	private final String USERNAME = "system";
@@ -21,7 +22,7 @@ public class ShopDAO {
 			e.printStackTrace();
 		}
 	} //end of getConnection
-	
+
 	public void disConnection() {
 		try {
 			if(conn != null) conn.close();
@@ -55,7 +56,6 @@ public class ShopDAO {
 	public int seqCustno(ShopVO vo) {
 		String sql = "SELECT MAX(CUSTNO) FROM MEMBER_TBL_02";
 		int custno = 100001;
-		ResultSet rs = null;
 		try {
 			getConnection();
 			pstmt = conn.prepareStatement(sql);

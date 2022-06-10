@@ -5,7 +5,7 @@ header{
 	margin:0 auto; padding:5px; height:70px; line-height:30px;
 	text-align:center; color:white; background-color:Slateblue;
 }
-menu{
+nav{
 	margin:0 auto; padding:5px; height:30px; line-height:30px;
 	text-align:left; color:white; background-color:Cornflowerblue;
 }
@@ -23,6 +23,9 @@ section{
 }
 #section_title{
 	text-align:center; line-height:40px;
+}
+article{
+	margin:0 auto;
 }
 footer{
 	margin:0 auto; padding:5px; height:40px; line-height:40px;

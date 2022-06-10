@@ -29,13 +29,7 @@ section table td a:hover{color: Cornflowerblue;}
 </style>
 </head>
 <body>
-	<header><h2>쇼핑몰 회원관리 ver 1.0</h2></header>
-		<menu>
-			<li><a href="memberJoin.jsp">회원등록</a></li>
-			<li><a href="memberList.jsp">회원목록조회/수정</a></li>
-			<li><a href="moneyList.jsp">회원매출조회</a></li>
-			<li><a href="../index.jsp">홈으로</a></li>
-		</menu>
+	<%@ include file="body_top.jsp" %>
 	<section>
 			<h3 id="section_title">쇼핑몰 회원 조회/수정</h3>
 		<table border="1">
@@ -66,7 +60,7 @@ section table td a:hover{color: Cornflowerblue;}
 <%		} %>
 		</table>
 	</section>
-	<footer>HRDKOREA Copyrightⓒ2016 All rights reserved. Human Resources Development Service of Korea.</footer>
+	<%@ include file="body_bottom.jsp" %>
 </body>
 </html>
 <%		
