@@ -2,8 +2,15 @@ body{
 	margin:0; padding:0; font-style:"맑은 고딕";
 }
 header{
-	margin:0 auto; padding:5px; height:70px; line-height:30px;
+	margin:0 auto; padding:5px; height:70px; line-height:10px;
 	text-align:center; color:white; background-color:Slateblue;
+}
+#search_area{
+	background-color:Slateblue;
+}
+#search{
+	margin:0 30px 0 0; float:right; height:30px; line-height:30px;
+	display: block; color:white; font-weight:bold;
 }
 menu{
 	margin:0 auto; padding:5px; height:30px; line-height:30px;
@@ -16,7 +23,7 @@ menu li a{
 	text-decoration:none; color:white;
 }
 menu li a:hover{
-	color: Darkslateblue;
+	color:Darkslateblue;
 }
 section{
 	margin:0 auto; padding:5px; height:600px; background-color:#DDE;

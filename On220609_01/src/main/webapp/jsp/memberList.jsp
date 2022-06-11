@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*, java.sql.*, javax.sql.*, com.shopmanager.dao.*"%>
-
 <jsp:useBean id="dao" class="com.shopmanager.dao.ShopDAO"/>
-<%
-	request.setCharacterEncoding("UTF-8");
-	List<ShopVO> list = dao.shopList();
-%>
+<%	List<ShopVO> list = dao.shopList(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,8 +43,7 @@ section table td a:hover{color: Cornflowerblue;}
  				<td><%=grade %></td>
  				<td><%=vo.getCity() %></td>
  			</tr>
-<%		
-} %>
+<%		} %>
 		</table>
 	</section>
 	<%@ include file="body_bottom.jsp" %>

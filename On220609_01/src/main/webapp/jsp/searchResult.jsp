@@ -1,29 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*, java.sql.*, javax.sql.*, com.shopmanager.dao.*"%>
 <jsp:useBean id="dao" class="com.shopmanager.dao.ShopDAO"/>
-<%	List<ShopVO> list = dao.moneyList(); %>
+<%	List<ShopVO> list = dao.searchResult(); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원매출조회</title>
+<title>회원 찾기</title>
 <link rel="stylesheet" type="text/css" href="../css/baseStyle.css">
 <style type="text/css">
-	section table{width:600px; margin:150px auto; text-align:center;}
-	section table td a{text-decoration:none; color:black;}
-	section table td a:hover{color: Cornflowerblue;}
+	section table{width:950px; margin:100px auto;}
+section table td a{text-decoration:none; color:black;}
+section table td a:hover{color: Cornflowerblue;}
 </style>
 </head>
 <body>
 	<%@ include file="body_top.jsp" %>
 	<section>
-		<h3 id="section_title">회원 매출 조회</h3>
+			<h3 id="section_title">회원 검색 결과</h3>
 		<table border="1">
 			<tr>
 				<th>회원번호</th>
 				<th>회원성명</th>
+				<th>전화번호</th>
+				<th>주소</th>
+				<th>가입일자</th>
 				<th>고객등급</th>
-				<th>　매출　</th>
+				<th>거주지역</th>
 			</tr>
 <%
 	for(ShopVO vo : list) {
@@ -31,12 +34,15 @@
 		if(vo.getGrade().equals("A")) grade = "VIP";
 		else if(vo.getGrade().equals("B")) grade = "일반";
 %>
-			<tr>
-				<td><a href="memberUpdate.jsp?custno=<%=vo.getCustno() %>" id="td_1"><%=vo.getCustno() %></a></td>
-				<td><%=vo.getCustname() %></td>
-				<td><%=grade %></td>
-				<td><%=vo.getPrice() %></td>
-			</tr>
+ 			<tr>
+ 				<td><a href="memberUpdate.jsp?custno=<%=vo.getCustno() %>"><%=vo.getCustno() %></a></td>
+ 				<td><%=vo.getCustname() %></td>
+ 				<td><%=vo.getPhone() %></td>
+ 				<td><%=vo.getAddress() %></td>
+ 				<td><%=vo.getJoindate().substring(0,10) %></td>
+ 				<td><%=grade %></td>
+ 				<td><%=vo.getCity() %></td>
+ 			</tr>
 <%		} %>
 		</table>
 	</section>

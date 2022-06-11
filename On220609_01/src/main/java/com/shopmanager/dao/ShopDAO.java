@@ -33,7 +33,6 @@ public class ShopDAO {
 	} //end of disConnection
 	
 	public List<ShopVO> shopList() {
-		
 		List<ShopVO> list = new ArrayList<ShopVO>();
 		
 		try {
@@ -149,4 +148,67 @@ public class ShopDAO {
 		}
 		return vo;
 	} //end of ShopUpdateData
+	
+	public List<ShopVO> moneyList() {
+		List<ShopVO> list = new ArrayList<ShopVO>();
+		
+		try {
+			getConnection();
+			String sql = "SELECT MEM.CUSTNO, MEM.CUSTNAME, MEM.GRADE, SUM(MON.PRICE) "
+					+ "FROM MEMBER_TBL_02 MEM, MONEY_TBL_02 MON "
+					+ "WHERE MEM.CUSTNO = MON.CUSTNO "
+					+ "GROUP BY MEM.CUSTNO, MEM.CUSTNAME, MEM.GRADE "
+					+ "ORDER BY SUM(MON.PRICE) DESC";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ShopVO vo = new ShopVO();
+				
+				vo.setCustno(rs.getInt(1));
+				vo.setCustname(rs.getString(2));
+				vo.setGrade(rs.getString(3));
+				vo.setPrice(rs.getInt(4));
+				
+				list.add(vo);
+			}
+			rs.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			disConnection();
+		}
+		return list;
+	} //end of moneyList
+	
+	public List<ShopVO> searchResult() {
+		List<ShopVO> list = new ArrayList<ShopVO>();
+		ShopVO vo = new ShopVO();
+		try {
+			getConnection();
+			String sql = "SELECT * FROM MEMBER_TBL_02 WHERE ? LIKE '%?%'";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getSearchW());
+			pstmt.setString(2, vo.getSearchL());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				vo = new ShopVO();
+				
+				vo.setCustno(rs.getInt(1));
+				vo.setCustname(rs.getString(2));
+				vo.setPhone(rs.getString(3));
+				vo.setAddress(rs.getString(4));
+				vo.setJoindate(rs.getString(5));
+				vo.setGrade(rs.getString(6));
+				vo.setCity(rs.getString(7));
+				
+				list.add(vo);
+			}
+			rs.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			disConnection();
+		}
+		return list;
+	} // end of searchResult
 } //end of class shopmanagerDAO

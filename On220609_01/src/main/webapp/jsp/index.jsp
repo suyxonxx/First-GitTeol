@@ -8,13 +8,7 @@
 <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
 </head>
 <body>
-	<header><h2>쇼핑몰 회원관리 ver 1.0</h2></header>
-	<menu>
-		<li><a href="jsp/memberJoin.jsp">회원등록</a></li>
-		<li><a href="jsp/memberList.jsp">회원목록조회/수정</a></li>
-		<li><a href="jsp/moneyList.jsp">회원매출조회</a></li>
-		<li><a href="index.jsp">홈으로</a></li>
-	</menu>
+	<%@ include file="body_top.jsp" %>
 	<section>
 		<h3 id="section_title">쇼핑몰 회원관리 프로그램</h3>
 		<article>
@@ -27,6 +21,6 @@
 		6. 회원매출정보 조회 프로그램을 작성한다.
 		</article>
 	</section>
-	<footer>HRDKOREA Copyrightⓒ2016 All rights reserved. Human Resources Development Service of Korea.</footer>
+	<%@ include file="body_bottom.jsp" %>
 </body>
 </html>

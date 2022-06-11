@@ -2,7 +2,6 @@
     pageEncoding="UTF-8" import="java.util.*, java.sql.*, javax.sql.*, com.shopmanager.dao.*"%>
 <jsp:useBean id="dao" class="com.shopmanager.dao.ShopDAO"/>
 <%
-	request.setCharacterEncoding("UTF-8");
 	int custno = Integer.parseInt(request.getParameter("custno"));
 	ShopVO vo = dao.ShopUpdateData(custno);
 %>
