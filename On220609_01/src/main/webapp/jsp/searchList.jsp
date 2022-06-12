@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*, java.sql.*, javax.sql.*, com.shopmanager.dao.*"%>
+    pageEncoding="UTF-8" import="java.util.*, com.shopmanager.dao.*"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="dao" class="com.shopmanager.dao.ShopDAO"/>
-<%	List<ShopVO> list = dao.searchResult(); %>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String type = (String)session.getAttribute("type");
+	String search = (String)session.getAttribute("search");
+	List<ShopVO> list = dao.searchList(type, search);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +16,12 @@
 <link rel="stylesheet" type="text/css" href="../css/baseStyle.css">
 <style type="text/css">
 	section table{width:950px; margin:100px auto;}
-section table td a{text-decoration:none; color:black;}
-section table td a:hover{color: Cornflowerblue;}
+	section table td a{text-decoration:none; color:black;}
+	section table td a:hover{color: Cornflowerblue;}
 </style>
 </head>
 <body>
+	<div id="search_area"><table id="search"><tr><td></td></tr></table><br></div>
 	<%@ include file="body_top.jsp" %>
 	<section>
 			<h3 id="section_title">회원 검색 결과</h3>

@@ -180,15 +180,16 @@ public class ShopDAO {
 		return list;
 	} //end of moneyList
 	
-	public List<ShopVO> searchResult() {
+	public List<ShopVO> searchList(String type, String search) {
 		List<ShopVO> list = new ArrayList<ShopVO>();
 		ShopVO vo = new ShopVO();
 		try {
 			getConnection();
-			String sql = "SELECT * FROM MEMBER_TBL_02 WHERE ? LIKE '%?%'";
+			String sql = "SELECT * FROM MEMBER_TBL_02 WHERE ? LIKE ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getSearchW());
-			pstmt.setString(2, vo.getSearchL());
+			pstmt.setString(1, type);
+			if(search == null) pstmt.setString(2, "'%%'");
+			else pstmt.setString(2, "'%" + search + "%'");
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				vo = new ShopVO();
@@ -210,5 +211,5 @@ public class ShopDAO {
 			disConnection();
 		}
 		return list;
-	} // end of searchResult
+	} // end of searchList
 } //end of class shopmanagerDAO

@@ -15,6 +15,7 @@ section table td a:hover{color: Cornflowerblue;}
 </style>
 </head>
 <body>
+	<%@ include file="search.jsp" %>
 	<%@ include file="body_top.jsp" %>
 	<section>
 			<h3 id="section_title">쇼핑몰 회원 조회/수정</h3>

@@ -17,6 +17,7 @@
 </style>
 </head>
 <body>
+	<%@ include file="search.jsp" %>
 	<%@ include file="body_top.jsp" %>
 	<form method="get" action="memberJoin_impl.jsp" name="frm">
 		<section>

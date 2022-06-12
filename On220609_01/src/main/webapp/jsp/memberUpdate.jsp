@@ -18,6 +18,7 @@
 </style>
 </head>
 <body>
+	<%@ include file="search.jsp" %>
 	<%@ include file="body_top.jsp" %>
 	<form method="get" action="memberUpdate_impl.jsp" name="frm">
 		<section>

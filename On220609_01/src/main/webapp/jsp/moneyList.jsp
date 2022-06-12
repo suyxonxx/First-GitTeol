@@ -15,6 +15,7 @@
 </style>
 </head>
 <body>
+	<%@ include file="search.jsp" %>
 	<%@ include file="body_top.jsp" %>
 	<section>
 		<h3 id="section_title">회원 매출 조회</h3>

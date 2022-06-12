@@ -14,8 +14,6 @@ public class ShopVO {
 	private int price;
 	private String pcode;
 	private String sdate;
-	private String searchL;
-	private String searchW;
 	
 	public int getCustno() {
 		return custno;
@@ -94,17 +92,5 @@ public class ShopVO {
 	}
 	public void setSdate(String sdate) {
 		this.sdate = sdate;
-	}
-	public String getSearchL() {
-		return searchL;
-	}
-	public void setSearchL(String searchL) {
-		this.searchL = searchL;
-	}
-	public String getSearchW() {
-		return searchW;
-	}
-	public void setSearchW(String searchW) {
-		this.searchW = searchW;
 	}
 }

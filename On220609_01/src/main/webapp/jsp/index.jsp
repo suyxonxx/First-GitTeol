@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
 </head>
 <body>
+	<%@ include file="search.jsp" %>
 	<%@ include file="body_top.jsp" %>
 	<section>
 		<h3 id="section_title">쇼핑몰 회원관리 프로그램</h3>
