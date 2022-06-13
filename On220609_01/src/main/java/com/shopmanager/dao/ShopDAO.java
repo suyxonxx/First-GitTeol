@@ -185,11 +185,16 @@ public class ShopDAO {
 		ShopVO vo = new ShopVO();
 		try {
 			getConnection();
-			String sql = "SELECT * FROM MEMBER_TBL_02 WHERE ? LIKE ?";
+			String sql = null;
+			if(type.equalsIgnoreCase("custno")) sql = "SELECT * FROM MEMBER_TBL_02 WHERE CUSTNO LIKE ?";
+			else if(type.equalsIgnoreCase("custname")) sql = "SELECT * FROM MEMBER_TBL_02 WHERE CUSTNAME LIKE ?";
+			else if(type.equalsIgnoreCase("phone")) sql = "SELECT * FROM MEMBER_TBL_02 WHERE PHONE LIKE ?";
+			else if(type.equalsIgnoreCase("address")) sql = "SELECT * FROM MEMBER_TBL_02 WHERE ADDRESS LIKE ?";
+			else if(type.equalsIgnoreCase("joindate")) sql = "SELECT * FROM MEMBER_TBL_02 WHERE JOINDATE LIKE ?";
+			else if(type.equalsIgnoreCase("grade")) sql = "SELECT * FROM MEMBER_TBL_02 WHERE GRADE LIKE ?";
+			else if(type.equalsIgnoreCase("city")) sql = "SELECT * FROM MEMBER_TBL_02 WHERE CITY LIKE ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, type);
-			if(search == null) pstmt.setString(2, "'%%'");
-			else pstmt.setString(2, "'%" + search + "%'");
+			pstmt.setString(1, "'%" + search + "%'");
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				vo = new ShopVO();
