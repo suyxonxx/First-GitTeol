@@ -7,6 +7,8 @@
 	String type = (String)session.getAttribute("type");
 	String search = (String)session.getAttribute("search");
 	List<ShopVO> list = dao.searchList(type, search);
+	System.out.println(type);
+	System.out.println(search);
 %>
 <!DOCTYPE html>
 <html>
