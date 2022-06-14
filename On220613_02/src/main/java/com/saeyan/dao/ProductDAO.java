@@ -53,7 +53,7 @@ public class ProductDAO {
 	
 //	Create r u d
 	public int insertProduct(ProductVO pvo) {
-		int result = -1;
+		int result = 0;
 		String sql = "INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.NEXTVAL, ?, ?, ?, ?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -71,7 +71,6 @@ public class ProductDAO {
 		} finally {
 			DBManager.close(conn, pstmt);
 		}
-		
 		return result;
 	} //end of insertProduct
 	
@@ -104,8 +103,9 @@ public class ProductDAO {
 	} //end of selectProductByCode
 	
 //	c r Update d
-	public void updateProduct(ProductVO pvo) {
-		String sql = "UPDATE PRODUCT SET NAME=?, PRICE=?, PICTUREURL=?, DESCRIPTION=?. WHERE CODE=?";
+	public int updateProduct(ProductVO pvo) {
+		int result = 0;
+		String sql = "UPDATE PRODUCT SET NAME=?, PRICE=?, PICTUREURL=?, DESCRIPTION=? WHERE CODE=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -116,11 +116,31 @@ public class ProductDAO {
 			pstmt.setString(3, pvo.getPictureurl());
 			pstmt.setString(4, pvo.getDescription());
 			pstmt.setInt(5, pvo.getCode());
-			pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, pstmt);
 		}
+		return result;
 	} //end of updateProduct
+	
+//	c r u Delete
+	public void deleteProduct(String code) {
+		String sql = "DELETE FROM PRODUCT WHERE CODE=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, code);
+			rs = pstmt.executeQuery();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+	} //end of deleteProduct
 } //end of class ProductDAO
