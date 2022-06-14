@@ -31,24 +31,24 @@
 						<table>
 							<tr>
 								<th style="width:80px">제　목</th>
-								<td><input type="text" name="title" value="${movie.title}" size="80"></td>
+								<td><input type="text" name="title" value="${movie.title}" size="70"></td>
 							</tr>
 							<tr>
 								<th>가　격</th>
-								<td><input type="text" name="price" value="${movie.price}"></td>
+								<td><input type="text" name="price" value="${movie.price}" size="70"></td>
 							</tr>
 							<tr>
 								<th>감　독</th>
-								<td><input type="text" name="director" value="${movie.director}" size="80"></td>
+								<td><input type="text" name="director" value="${movie.director}" size="70"></td>
 							</tr>
 							<tr>
 								<th>배　우</th>
-								<td><input type="text" name="actor" value="${movie.actor}" size="80"></td>
+								<td><input type="text" name="actor" value="${movie.actor}" size="70"></td>
 							</tr>
 							<tr>
 								<th>시놉시스</th>
 								<td>
-									<textarea rows="10" cols="80" name="synopsis">${movie.synopsis}</textarea>
+									<textarea rows="10" cols="70" name="synopsis">${movie.synopsis}</textarea>
 								</td>
 							</tr>
 							<tr>

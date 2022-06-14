@@ -74,6 +74,7 @@ public class MovieDAO {
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, code);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {

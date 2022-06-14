@@ -49,6 +49,6 @@ public class MovieInsertServlet extends HttpServlet {
 		MovieDAO dao = MovieDAO.getInstance();
 		int result = dao.movieInsert(vo);
 		if(result == 1) response.sendRedirect("movieList.do");
-		else response.sendRedirect("jsp/movieInsert.jsp");
+		else response.sendRedirect("movieInsert.do");
 	}
 }

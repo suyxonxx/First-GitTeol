@@ -61,6 +61,6 @@ public class MovieUpdateServlet extends HttpServlet {
 		int result = dao.movieUpdate(vo);
 
 		if(result == 1) response.sendRedirect("movieList.do");
-		else response.sendRedirect("jsp/movieUpdate.jsp");
+		else response.sendRedirect("movieUpdate.do?code=" + code);
 	}
 }
