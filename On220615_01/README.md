@@ -10,8 +10,7 @@ web-study-11
 07. jstl.jar
 08. ojdbc6.jar
 09. standard.jar
-10. cos.jar (Version : cos-22.05) => 파일을 송수신 하는 역할을 함.
-11. lombok.jar
+10. lombok.jar
 
 DBCP 연결 (server.xml에 추가)
 <Context docBase="web-study-11" path="/" reloadable="true" source="org.eclipse.jst.jee.server:web-study-11">
