@@ -1,4 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="util.*"%>
 <!DOCTYPE html>
-<% response.sendRedirect("/BoardServlet?command=board_list"); %>
+<% response.sendRedirect("BoardServlet?command=board_list"); %>

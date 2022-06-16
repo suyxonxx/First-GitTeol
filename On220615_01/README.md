@@ -13,6 +13,6 @@ web-study-11
 10. lombok.jar
 
 DBCP 연결 (server.xml에 추가)
-<Context docBase="web-study-11" path="/" reloadable="true" source="org.eclipse.jst.jee.server:web-study-11">
+<Context docBase="web-study-11" path="/web-study-11" reloadable="true" source="org.eclipse.jst.jee.server:web-study-11">
 	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="tiger" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:xe" username="scott"/>
 </Context>
