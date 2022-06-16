@@ -111,6 +111,7 @@ public class EmployeesDAO {
 			pstmt.setString(4, vo.getGender());
 			pstmt.setString(5, vo.getPhone());
 			pstmt.setString(6, vo.getId());
+			pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
