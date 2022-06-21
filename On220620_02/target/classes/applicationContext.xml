@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 	
-	<bean id="tv1" class="polymorphism.SamsungTV"/>
-	<bean id="tv2" class="polymorphism.LgTV"/>
+	<bean id="tv1" class="polymorphism.SamsungTV"
+	p:speaker-ref="sony" p:price="250"><!-- init-method="initMethod" destroy-method="destroyMethod" lazy-init="true" -->
+		<constructor-arg name="speaker" ref="sony"></constructor-arg><!-- ref : 객체 넣기 -->
+		<!-- <constructor-arg name="price" value="250" type="int"></constructor-arg> --><!-- value : 값 넣기 -->
+	</bean>
+	<bean id="tv2" class="polymorphism.LgTV">
+		<!-- <constructor-arg ref="apple"></constructor-arg> --><!-- ref : 객체 넣기 -->
+		<!-- <constructor-arg value="500" type="int"></constructor-arg> --><!-- value : 값 넣기 -->
+	</bean>
 	<bean id="tv3" class="polymorphism.SonyTV"/>
+	<bean id="sony" class="polymorphism.SonySpeaker"/>
+	<bean id="apple" class="polymorphism.AppleSpeaker"/>
 </beans>

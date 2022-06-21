@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<bean id="CollectionBean" class="com.springbook.ioc.injection.CollectionBean">
+		<property name="addressList">
+			<list>
+				<value>서울특별시 강남구 역삼동</value>
+				<value>서울특별시 성동구 행당동</value>
+			</list>
+		</property>
+		<property name="addressSet">
+			<set value-type="java.lang.String">
+				<value>서울특별시 강남구 청담동</value>
+				<value>서울특별시 서초구 반포동</value>
+			</set>
+		</property>
+		<property name="addressMap">
+			<map>
+				<entry key="아기자기" value="서울특별시 종로구 익선동"/>
+				<entry key="홍대가자" value="서울특별시 마포구 합정동"/>
+			</map>
+		</property>
+		<property name="addressProperties">
+			<props>
+				<prop key="경복궁">서울특별시 종로구 청와대로 161</prop>
+				<prop key="덕수궁">서울특별시 중구 세종대로 99</prop>
+			</props>
+		</property>
+	</bean>
+</beans>	
