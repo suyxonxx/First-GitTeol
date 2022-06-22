@@ -1,6 +1,16 @@
 package polymorphism;
 
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component("lg")
 public class LgTV implements TV{
+//	@Autowired
+//	@Qualifier("apples")
+	@Resource(name="apples")
 	private Speaker speaker;
 	private int price;
 	

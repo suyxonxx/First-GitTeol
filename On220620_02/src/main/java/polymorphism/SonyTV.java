@@ -1,5 +1,8 @@
 package polymorphism;
 
+import org.springframework.stereotype.Component;
+
+@Component("sony")
 public class SonyTV implements TV{
 	public SonyTV() {
 		System.out.println("SonyTV 생성자");
