@@ -9,11 +9,11 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	<context:component-scan base-package="com.springbook.biz">
 	</context:component-scan>
-	<bean id="log" class="com.springbook.biz.common.Log4jAdvice"/>
+	<bean id="before" class="com.springbook.biz.common.BeforeAdvice"/>
 	<aop:config>
 		<aop:pointcut id="allPointcut" expression="execution(* com.springbook.biz..*impl.*(..))"/>
-		<aop:aspect ref="log">
-			<aop:before pointcut-ref="allPointcut" method="printLogging"/>
+		<aop:aspect ref="before">
+			<aop:before pointcut-ref="allPointcut" method="beforeLog"/>
 		</aop:aspect>
 	</aop:config>
 </beans>
