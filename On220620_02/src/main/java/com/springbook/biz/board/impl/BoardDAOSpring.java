@@ -1,4 +1,4 @@
-package com.springbook.biz.impl;
+package com.springbook.biz.board.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +14,7 @@ import com.springbook.biz.board.BoardVO;
 @Repository
 public class BoardDAOSpring {
 	private final String BOARD_INSERT = "INSERT INTO BOARD(SEQ, TITLE, WRITER, CONTENT) "
-							 + "VALUES(?, ?, ?, ?)";
+							 + "VALUES((SELECT NVL(MAX(SEQ), 0)+1 FROM BOARD), ?, ?, ?)";
 	private final String BOARD_UPDATE = "UPDATE BOARD SET TITLE=?, CONTENT=?, WHERE SEQ=?";
 	private final String BOARD_DELETE = "DELETE BOARD WHERE SEQ=?";
 	private final String BOARD_GET = "SELECT * FROM BOARD WHERE SEQ=?";
@@ -25,7 +25,7 @@ public class BoardDAOSpring {
 	
 	public void insertBoard(BoardVO vo) {
 		System.out.println("===> Spring JDBC로 insertBoard() 기능 처리");
-		jdbcTemplate.update(BOARD_INSERT, vo.getSeq(), vo.getTitle(), vo.getWriter(), vo.getContent());
+		jdbcTemplate.update(BOARD_INSERT, vo.getTitle(), vo.getWriter(), vo.getContent());
 	}
 
 	public void updateBoard(BoardVO vo) {

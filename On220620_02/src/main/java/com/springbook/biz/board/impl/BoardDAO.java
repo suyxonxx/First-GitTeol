@@ -1,4 +1,4 @@
-package com.springbook.biz.impl;
+package com.springbook.biz.board.impl;
 
 import java.sql.*;
 import java.util.*;
@@ -16,8 +16,8 @@ public class BoardDAO {
 	
 	private final String BOARD_INSERT = "INSERT INTO BOARD(SEQ, TITLE, WRITER, CONTENT) "
 							 + "VALUES((SELECT NVL(MAX(SEQ), 0)+1 FROM BOARD), ?, ?, ?)";
-	private final String BOARD_UPDATE = "UPDATE BOARD SET TITLE=?, CONTENT=?, WHERE SEQ=?";
-	private final String BOARD_DELETE = "DELETE BOARD WHERE SEQ=?";
+	private final String BOARD_UPDATE = "UPDATE BOARD SET TITLE=?, CONTENT=? WHERE SEQ=?";
+	private final String BOARD_DELETE = "DELETE FROM BOARD WHERE SEQ=?";
 	private final String BOARD_GET = "SELECT * FROM BOARD WHERE SEQ=?";
 	private final String BOARD_LIST = "SELECT * FROM BOARD ORDER BY SEQ DESC";
 	
