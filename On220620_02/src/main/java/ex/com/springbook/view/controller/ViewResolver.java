@@ -1,4 +1,4 @@
-package com.springbook.view.controller;
+package ex.com.springbook.view.controller;
 
 public class ViewResolver {
 	public String prefix;
