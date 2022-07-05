@@ -20,4 +20,6 @@ public class BoardVO {
 	private int seq, cnt;
 	private String title, writer, content;
 	private Date regdate;
+	
+	private String searchCondition, searchKeyword;
 }

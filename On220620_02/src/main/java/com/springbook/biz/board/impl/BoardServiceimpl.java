@@ -12,7 +12,7 @@ import com.springbook.biz.board.BoardVO;
 @Service("boardService")
 public class BoardServiceimpl implements BoardService {
 	@Autowired
-	private BoardDAOSpring boardDAO;
+	private BoardDAO boardDAO;
 //	private LogAdvice log;
 	
 //	public BoardServiceimpl() {
