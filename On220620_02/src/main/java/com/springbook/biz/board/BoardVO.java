@@ -1,8 +1,12 @@
 package com.springbook.biz.board;
 
+import lombok.Data;
+
 import java.sql.Date;
 
-import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /*
 CREATE TABLE BOARD(
@@ -20,6 +24,21 @@ public class BoardVO {
 	private int seq, cnt;
 	private String title, writer, content;
 	private Date regdate;
-	
 	private String searchCondition, searchKeyword;
+	private MultipartFile uploadFile;
+	
+	@JsonIgnore
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+	
+	@JsonIgnore
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	
+	@JsonIgnore
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
 }
