@@ -15,7 +15,7 @@ PRIMARY KEY(BNO);
 DESC TBL_BOARD;
 
 INSERT INTO TBL_BOARD(BNO, TITLE, CONTENT, WRITER)
-VALUES(SEQ_BOARD.NEXTVAL, 'È«±æµ¿Àü' , 'µµµÏÀÌ¾ß±â', 'Çã±Õ');
+VALUES(SEQ_BOARD.NEXTVAL, 'í™ê¸¸ë™ì „' , 'ë„ë‘‘ì´ì•¼ê¸°', 'í—ˆê· ');
 
 SELECT * FROM TBL_BOARD WHERE BNO > 0;
 
