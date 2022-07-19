@@ -34,17 +34,36 @@
 						</tr>
 					</thead>
 					<c:forEach items="${list}" var="board">
-						<tr>
+						<tr class="odd gradeX">
 							<td><c:out value="${board.bno}" /></td>
-							<td><a href="/board/get?bno=<c:out value="${board.bno}" />">
-								<c:out value="${board.title}" /></a></td>
+							<td><c:out value="${board.title}" /></td>
 							<td><c:out value="${board.writer}" /></td>
-							<td><fmt:formatDate pattern="yyyy/MM/dd" value="${board.regdate}" /></td>
-							<td><fmt:formatDate pattern="yyyy/MM/dd" value="${board.updatedate}" /></td>
+							<td><fmt:formatDate pattern="yyyy-MM-dd"
+									value="${board.regdate}" /></td>
+							<td><fmt:formatDate pattern="yyyy-MM-dd"
+									value="${board.updatedate}" /></td>
 						</tr>
 					</c:forEach>
 				</table>
 				<!-- /.table-responsive -->
+				<div class="pull-right">
+					<ul class="pagination">
+						<c:if test="${pageMaker.prev}">
+							<li class="paginate_button previous"><a href="${pageMaker.startPage-1}">Prev</a></li>
+						</c:if>
+						<c:forEach var = "num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+						<li class="paginate_button ${pageMaker.cri.pageNum == num ? "active" : ""}">
+						<a href="${num}"><c:out value="${num}"/></a></li>
+						</c:forEach>
+						<c:if test="${pageMaker.next}">
+							<li class="paginate_button next"><a href="${pageMaker.endPage+1}">Next</a></li>
+						</c:if>
+					</ul>
+				</div>
+				<form id="actionForm" action="/board/list" method="get">
+					<input type="hidden" name="pageNum" value="${pageMaker.pageNum}">
+					<input type="hidden" name="amount" value="${pageMaker.amount}">
+				</form>
 				<!-- Modal 창 추가 -->
 				<div id="myModal" class="modal" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
@@ -79,22 +98,29 @@
 	$(document).ready(function() {
 		var result = '<c:out value="${result}"/>';
 		console.log("result" + result);
-		
+
 		checkModal(result);
-		
+
 		history.replaceState({}, null, null);
-		
+
 		function checkModal(result) {
-			if(result === '' || history.state) {
+			if (result === '' || history.state) {
 				return;
 			}
-			if(parseInt(result) > 0) {
+			if (parseInt(result) > 0) {
 				$(".modal-body").html(parseInt(result) + "번 게시글이 등록되었습니다.");
 			}
 			$("#myModal").modal("show");
 		}
 		$("#regBtn").on("click", function() {
 			self.location = "/board/register";
+		});
+		
+		var actionForm = $("#actionForm");
+		$(".paginate_button a").on("click", function(e) {
+			e.preventDefault();
+			console.log('click');
+			actionForm.find("input[name='pageNum']").val($(this).attr("href")).submit();
 		});
 	});
 </script>
