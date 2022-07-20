@@ -79,7 +79,7 @@
             <!-- 페이지 처리 End -->
             
             <form id="actionForm" action="/board/list" method="get" >
-               <input type="hidden" name="pageNum" >
+               <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
                <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
             </form>
             
@@ -98,10 +98,10 @@
                         </button>
                      </div>
                      <div class="modal-body">
-                        처리가 완료됐습니다.
+                        처리가 완료되었습니다.
                      </div>
                      <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                      </div>
                   </div>

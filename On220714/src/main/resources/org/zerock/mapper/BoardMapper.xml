@@ -49,4 +49,9 @@
 			WHERE RN > (#{pageNum} - 1) * #{amount}
 		]]>
 	</select>
+	<select id="getTotalCount" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM TBL_BOARD WHERE BNO>0
+		]]>
+	</select>
 </mapper>
