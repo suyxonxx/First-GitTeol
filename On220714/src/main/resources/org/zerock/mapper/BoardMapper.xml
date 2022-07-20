@@ -54,4 +54,30 @@
 			SELECT COUNT(*) FROM TBL_BOARD WHERE BNO>0
 		]]>
 	</select>
+	<!-- 검색조건 -->
+	<select id="searchTest" resultType="org.zerock.domain.BoardVO">
+	<!--SELECT * FROM TBL_BOARD
+		WHERE ( CONTENT LIKE '파프리카' and TITLE LIKE '오이' and WRITER LIKE '토마토' )
+		and ROWNUM < 10-->
+		<![CDATA[
+			SELECT * FROM TBL_BOARD
+			WHERE
+		]]>
+			<trim suffix="and">
+				<foreach collection="map" index="key" item="val" separator="or" open="(" close=")">
+					<if test="key == 'T'.toString()">
+						TITLE LIKE #{val}
+					</if>
+					<if test="key == 'C'.toString()">
+						CONTENT LIKE #{val}
+					</if>
+					<if test="key == 'W'.toString()">
+						WRITER LIKE #{val}
+					</if>
+				</foreach>
+			</trim>
+		<![CDATA[
+			ROWNUM < 10
+		]]>
+	</select>
 </mapper>
