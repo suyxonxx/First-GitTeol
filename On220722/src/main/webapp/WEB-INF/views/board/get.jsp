@@ -45,11 +45,11 @@
 <script>
 	var operForm = $("#operForm");
 	
-	$("button[data-oper='modify' ]").on("click", function(e){
+	$("button[data-oper='modify']").on("click", function(){
 		operForm.attr("action", "/board/modify").submit();
 	});
 	
-	$("button[data-oper=' list']").on("click", function(e){
+	$("button[data-oper=' list']").on("click", function(){
 		operForm.find("#bno").remove();
 		operForm.attr("action", "/board/list").submit();
 	});

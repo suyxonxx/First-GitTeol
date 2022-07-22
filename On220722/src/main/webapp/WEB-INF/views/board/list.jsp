@@ -170,5 +170,13 @@
 		});
 	});
 </script>
+<script type="text/javascript">
+	//get 페이지에서 뒤로가기하여 list 페이지로 돌아온 후, url에서 bno 파라미터가 잔류하여 쌓이는 문제 해결
+	window.onpageshow = function(e) {
+		if (e.persisted || (window.performance && window.performance.navigation.type == 2)) { //뒤로가기 감지
+			location.reload(); //현재 페이지 새로고침
+		}
+	}
+</script>
 
 <%@ include file="../includes/footer.jsp"%>
