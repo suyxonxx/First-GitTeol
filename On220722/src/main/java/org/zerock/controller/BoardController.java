@@ -14,21 +14,19 @@ import org.zerock.service.BoardService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
-import oracle.jdbc.proxy.annotation.Post;
-
 
 @Controller
 @Log4j
 @RequestMapping("/board/*")
 @AllArgsConstructor
 public class BoardController {
-	
 	private BoardService service;
 	
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
-		log.info("cri+ " + cri);
 		int total = service.getTotal(cri);
+		
+		log.info("cri :  " + cri);
 		log.info("total count : " + total);
 		
 		model.addAttribute("list", service.getList(cri));
@@ -36,9 +34,7 @@ public class BoardController {
 	}
 	
 	@GetMapping("/register")
-	public void register() {
-		
-	}
+	public void register() {}
 	
 	@PostMapping("/register")
 	public String register(BoardVO vo, RedirectAttributes rttr) {
@@ -49,15 +45,16 @@ public class BoardController {
 	}
 	
 	@GetMapping({"/get", "/modify"})
-	public void get(Long bno,  @ModelAttribute("cri") Criteria cri , Model model) {
-		log.info("--------------get or modify--------------");
+	public void get(Long bno,  @ModelAttribute("cri") Criteria cri, Model model) {
+		log.info("get or modify----------------------------------");
 		model.addAttribute("board", service.get(bno));
 	}
 	
 	@PostMapping("/remove")
 	public String remove(Long bno, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
-		log.info("remove---------" + bno);
-		if(service.remove(bno)==1) {
+		log.info("remove : " + bno);
+		
+		if(service.remove(bno) == 1) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		
@@ -65,32 +62,23 @@ public class BoardController {
 		rttr.addAttribute("amount", cri.getAmount());
 		rttr.addAttribute("type", cri.getType());
 		rttr.addAttribute("keyword", cri.getKeyword());
+		
 		return "redirect:/board/list";
 	}
 	
 	@PostMapping("/modify")
 	public String modify(BoardVO vo, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		log.info("modify : " + vo);
-		if( service.modify(vo) == 1) {
+		
+		if(service.modify(vo) == 1) {
 			rttr.addFlashAttribute("result", "success");
 		}
+		
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
 		rttr.addAttribute("type", cri.getType());
 		rttr.addAttribute("keyword", cri.getKeyword());
+		
 		return "redirect:/board/list";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		
 }

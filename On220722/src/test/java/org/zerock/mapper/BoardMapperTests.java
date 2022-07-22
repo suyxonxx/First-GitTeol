@@ -12,66 +12,72 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageDTO;
-import org.zerock.persistence.TimeMapperTests;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@AllArgsConstructor
 @Log4j
 public class BoardMapperTests {
-	@Autowired
 	private BoardMapper mapper;
 	
 	@Test
 	public void testGetList() {
-		log.info("----------------------------------");
+		log.info("--------------------------------------");
 		log.info(mapper.getList());
-	}
-	@Test
-	public void testRead() {
-		log.info("----------------------------------");
-		log.info(mapper.read(6L));
-	}
-	@Test
-	public void testDelete() {
-		log.info("----------------------------------");
-	    log.info("delete : " + mapper.delete(6L));
-	}
-	@Test
-	public void testInsert() {
-		BoardVO vo  =  new BoardVO();
-		vo.setTitle("spring2");
-		vo.setContent("spring2");
-		vo.setWriter("spring2");
-		log.info("----------------------------------");
-		log.info("insert : " + mapper.insert(vo));
-	}
-	@Test
-	public void testInsertSelectKey() {
-		BoardVO vo  =  new BoardVO();
-		vo.setTitle("java");
-		vo.setContent("java");
-		vo.setWriter("java2");
-		log.info("----------------------------------");
-		log.info("insert : " + mapper.insertSelectKey(vo));
-	}
-	@Test
-	public void testupdate() {
-		BoardVO vo  =  new BoardVO();
-		vo.setBno(9L);
-		vo.setTitle("aa");
-		vo.setContent("bbb........");
-		vo.setWriter("cc");
-		log.info("----------------------------------");
-		log.info("insert : " + mapper.update(vo));
+//		for(BoardVO vo : mapper.getList()) log.info(vo);
 	}
 	
 	@Test
-	public void testPaging() {
+	public void testRead() {
+		log.info("--------------------------------------");
+		log.info(mapper.read(6L));
+	}
+	
+	@Test
+	public void testDelete() {
+		log.info("--------------------------------------");
+		log.info("delete : " + mapper.delete(7L));
+	}
+	
+	@Test
+	public void testInsert() {
+		BoardVO vo = new BoardVO();
+		vo.setTitle("봄날");
+		vo.setContent("꽃샘추위");
+		vo.setWriter("스프링");
+		log.info("--------------------------------------");
+		log.info("insert : " + mapper.insert(vo));
+	}
+	
+	@Test
+	public void testInsertSelectKey() {
+		BoardVO vo = new BoardVO();
+		vo.setTitle("보옴");
+		vo.setContent("스프리잉");
+		vo.setWriter("봄나알");
+		log.info("--------------------------------------");
+		log.info("insert : " + mapper.insertSelectKey(vo));
+	}
+	
+	@Test
+	public void testUpdate() {
+		BoardVO vo = new BoardVO();
+		vo.setBno(9L);
+		vo.setTitle("호록");
+		vo.setContent("호로로록");
+		vo.setWriter("호로록");
+		log.info("---------------------------------------");
+		log.info("update : " + mapper.update(vo));
+	}
+	
+	@Test 
+	public void testGetListWithPagging() {
 		Criteria cri = new Criteria();
-		cri.setPageNum(4);
-		cri.setAmount(15);
+		cri.setPageNum(3);
+		cri.setAmount(10);
 		List<BoardVO> list = mapper.getListWithPagging(cri);
 		log.info(list);
 	}
@@ -84,26 +90,26 @@ public class BoardMapperTests {
 		PageDTO pageDTO = new PageDTO(cri, 315);
 		log.info(pageDTO);
 	}
+	
 	@Test
 	public void testSearchTest() {
 		Map<String, String> map = new HashMap<>();
-		map.put("T", "수원");
-		map.put("C", "bbb");
-		map.put("W", "이젠");
+		map.put("T", "오이");
+		map.put("C", "파프리카");
+		map.put("W", "토마토");
 		
-		
-		Map<String , Map<String, String >> outer = new HashMap<>();
+		Map<String, Map<String, String>> outer = new HashMap<>();
 		
 		outer.put("map", map);
-		List<BoardVO> list =  mapper.searchTest(outer);
-		log.info(list);
+		List<BoardVO> list = mapper.searchTest(outer);
+		log.info("list : " + list);
 	}
 	
 	@Test
 	public void testSearchPaging() {
 		Criteria cri = new Criteria();
-		cri.setType("TK");   //제목내용 저자
-	    cri.setKeyword("ja");
+		cri.setType("T");
+		cri.setKeyword("오이");
 		List<BoardVO> list = mapper.getListWithPagging(cri);
 		log.info(list);
 	}
@@ -111,35 +117,11 @@ public class BoardMapperTests {
 	@Test
 	public void testTotal() {
 		Criteria cri = new Criteria();
-		cri.setType("TK");   //제목내용 저자
-	    cri.setKeyword("ja");
+		cri.setType("T");
+		cri.setKeyword("오이");
 	    
 		int count = mapper.getTotalCount(cri);
 		log.info("----------------------------------------");
 		log.info("count : " + count);
-			
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
-
-
-
-

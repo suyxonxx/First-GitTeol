@@ -16,6 +16,6 @@ public interface BoardMapper {
 	public List<BoardVO> getListWithPagging(Criteria cri);
 	public int getTotalCount(Criteria cri);
 	
-	//검색조건
-	public List<BoardVO> searchTest( Map<String,  Map<String,String>> map);
+//	검색조건
+	public List<BoardVO> searchTest(Map<String, Map<String, String>> map);
 }
