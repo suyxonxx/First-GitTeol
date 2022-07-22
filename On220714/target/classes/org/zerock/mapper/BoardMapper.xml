@@ -3,21 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.BoardMapper">
-	<sql id="criteria">
+	<!-- <sql id="criteria">
 		<trim suffix="and">
 			<foreach collection="typeArr" item="type" separator="or" open="(" close=")">
-				<if test="type == 'T'.toString()">
+				<if test="type eq 'T'.toString()">
 					TITLE LIKE '%'|| #{keyword} ||'%'
 				</if>
-				<if test="type == 'C'.toString()">
+				<if test="type eq 'C'.toString()">
 					CONTENT LIKE '%'|| #{keyword} ||'%'
 				</if>
-				<if test="type == 'W'.toString()">
+				<if test="type eq 'W'.toString()">
 					WRITER LIKE '%'|| #{keyword} ||'%'
 				</if>
 			</foreach>
 		</trim>
-	</sql>
+	</sql> -->
 	
 	<select id="getList" resultType="org.zerock.domain.BoardVO">
 		SELECT * FROM TBL_BOARD WHERE BNO > 0 ORDER BY BNO DESC
@@ -75,7 +75,20 @@
 				FROM TBL_BOARD
 				WHERE
 		]]>
-		<include refid="criteria"></include>
+		<!-- <include refid="criteria"></include> -->
+		<trim prefix="(" suffix=") and">
+			<foreach collection="typeArr" item="type" separator="or">
+				<if test="type eq 'T'.String()">
+					TITLE LIKE #{keyword}
+				</if>
+				<if test="type eq 'C'.String()">
+					CONTENT LIKE #{keyword}
+				</if>
+				<if test="type eq 'W'.String()">
+					WRITER LIKE #{keyword}
+				</if>
+			</foreach>
+		</trim>
 		<![CDATA[
 				ROWNUM <= #{pageNum} * #{amount}
 			)
@@ -90,15 +103,15 @@
 	</select> -->
 	<select id="getTotalCount" resultType="int">
 		SELECT COUNT(*) FROM TBL_BOARD WHERE
-		<include refid="criteria"></include>
+		<!-- <include refid="criteria"></include> -->
 		BNO > 0
 	</select>
 	
 	<!-- 검색조건 -->
-	<select id="searchTest" resultType="org.zerock.domain.BoardVO">
 	<!--SELECT * FROM TBL_BOARD
 		WHERE ( CONTENT LIKE '파프리카' and TITLE LIKE '오이' and WRITER LIKE '토마토' )
 		and ROWNUM < 10-->
+	<!-- <select id="searchTest" resultType="org.zerock.domain.BoardVO">
 		<![CDATA[
 			SELECT * FROM TBL_BOARD
 			WHERE
@@ -119,5 +132,28 @@
 		<![CDATA[
 			ROWNUM < 10
 		]]>
+	</select> -->
+	<select id="searchTest" resultType="org.zerock.domain.BoardVO">
+		<![CDATA[
+			SELECT * FROM TBL_BOARD
+			WHERE
+		]]>
+		<trim prefix="(" suffix=") and">
+			<foreach collection="map" index="key" item="val" separator="or">
+				<if test="key == 'T'.toString()">
+					TITLE LIKE #{val}
+				</if>
+				<if test="key == 'C'.toString()">
+					CONTENT LIKE #{val}
+				</if>
+				<if test="key == 'W'.toString()">
+					WRITER LIKE #{val}
+				</if>
+			</foreach>
+		</trim>
+		<![CDATA[
+			ROWNUM < 10
+		]]>
+		<!-- /*+ INDEX_DESC(TBL_BOARD PK_BOARD)*/ -->
 	</select>
 </mapper>
