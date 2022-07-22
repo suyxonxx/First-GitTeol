@@ -3,6 +3,22 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.BoardMapper">
+	<sql id="criteria">
+		<trim suffix="and">
+			<foreach collection="typeArr" item="type" separator="or" open="(" close=")">
+				<if test="type == 'T'.toString()">
+					TITLE LIKE '%'|| #{keyword} ||'%'
+				</if>
+				<if test="type == 'C'.toString()">
+					CONTENT LIKE '%'|| #{keyword} ||'%'
+				</if>
+				<if test="type == 'W'.toString()">
+					WRITER LIKE '%'|| #{keyword} ||'%'
+				</if>
+			</foreach>
+		</trim>
+	</sql>
+	
 	<select id="getList" resultType="org.zerock.domain.BoardVO">
 		SELECT * FROM TBL_BOARD WHERE BNO > 0 ORDER BY BNO DESC
 	</select>
@@ -37,7 +53,7 @@
 		WHERE BNO = #{bno}
 	</update>
 	
-	<select id="getListWithPagging" resultType="org.zerock.domain.BoardVO">
+	<!-- <select id="getListWithPagging" resultType="org.zerock.domain.BoardVO">
 		<![CDATA[
 			SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE
 			      FROM (
@@ -48,12 +64,36 @@
 			      )
 			WHERE RN > (#{pageNum} - 1) * #{amount}
 		]]>
+	</select> -->
+	
+	<select id="getListWithPagging" resultType="org.zerock.domain.BoardVO">
+		<![CDATA[
+			SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE
+			FROM (
+				SELECT /*+ INDEX_DESC(TBL_BOARD PK_BOARD) */
+				ROWNUM RN, BNO, TITLE,CONTENT, WRITER,REGDATE, UPDATEDATE
+				FROM TBL_BOARD
+				WHERE
+		]]>
+		<include refid="criteria"></include>
+		<![CDATA[
+				ROWNUM <= #{pageNum} * #{amount}
+			)
+			WHERE RN > (#{pageNum} - 1) * #{amount}
+		]]>
 	</select>
-	<select id="getTotalCount" resultType="int">
+	
+	<!-- <select id="getTotalCount" resultType="int">
 		<![CDATA[
 			SELECT COUNT(*) FROM TBL_BOARD WHERE BNO>0
 		]]>
+	</select> -->
+	<select id="getTotalCount" resultType="int">
+		SELECT COUNT(*) FROM TBL_BOARD WHERE
+		<include refid="criteria"></include>
+		BNO > 0
 	</select>
+	
 	<!-- 검색조건 -->
 	<select id="searchTest" resultType="org.zerock.domain.BoardVO">
 	<!--SELECT * FROM TBL_BOARD
